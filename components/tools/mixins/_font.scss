@@ -1,0 +1,13 @@
+@mixin font(
+	$family: 'as',
+	$style: inherit,
+	$size: 0,
+	$line-height: 0,
+	$weight: inherit
+) {
+	font-size: var(--ms-#{$size});
+	font-family: set-font-family($family);
+	font-style: $style;
+	font-weight: $weight;
+	line-height: var(--vr-#{$line-height});
+}

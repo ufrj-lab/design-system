@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "AGPL",
+    "Affero",
+    "Carvalho",
+    "Luiz",
+    "Sublicensing",
+    "Vinícius",
+    "WIPO",
+    "genpushs",
+    "lerna",
+    "luizsantos",
+    "markdownlint",
+    "polyfill",
+    "postcss",
+    "reitoria",
+    "shadycss",
+    "stylelint",
+    "ufrj",
+    "viniciuscarvalho",
+    "webcomponents",
+    "webcomponentsjs"
+  ],
+  "tslint.enable": false
+}

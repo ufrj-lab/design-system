@@ -1,0 +1,16 @@
+{
+  "minify": true,
+  "options": ["setClasses"],
+  "dest": "./assets/js",
+  "feature-detects": [
+    "test/svg",
+    "test/css/animations",
+    "test/css/boxshadow",
+    "test/css/calc",
+    "test/css/checked",
+    "test/css/chunit",
+    "test/css/cssgrid",
+    "test/css/exunit",
+    "test/css/flexbox"
+  ]
+}

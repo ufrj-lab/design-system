@@ -1,0 +1,66 @@
+{
+  "name": "@ufrj/mnv-example",
+  "version": "0.0.2-alpha.0",
+  "description": "",
+  "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
+  "contributors": [
+    "Luiz Santos <luizggsantos@gmail.com> (https://ufrj.br)"
+  ],
+  "keywords": [
+    "design",
+    "system",
+    "web",
+    "polymer",
+    "components"
+  ],
+  "homepage": "http://mnv.olimpo.tic.ufrj.br",
+  "license": "AGPL-3.0",
+  "private": false,
+  "main": "lib/mnvElement.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "new": "echo \"Error: run new from root\" && exit 1",
+    "test": "echo \"Error: run test from root\" && exit 1",
+    "watch": "rollup -c -w",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath example/",
+    "watch:global": "lerna run watch",
+    "dev": "npm-run-all -p watch:global bs"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.0-rc.5"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "lerna": "^3.10.7",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.1.2"
+  },
+  "mnv": {
+    "targets": [
+      {
+        "type": "node"
+      },
+      {
+        "type": "browser"
+      }
+    ],
+    "clear": [
+      "lib",
+      "tmp"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

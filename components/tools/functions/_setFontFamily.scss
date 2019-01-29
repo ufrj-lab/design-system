@@ -1,0 +1,15 @@
+@function set-font-family($family) {
+	@if $family == 'assc' {
+		@return 'Alegreya Sans SC', sans-serif;
+	} @else if $family == 'as' {
+		@return 'Alegreya Sans', sans-serif;
+	} @else if $family == 'pd' {
+		@return 'Playfair Display', serif;
+	} @else if $family == 'fc' {
+		@return 'Fira Code', monospace;
+	} @else if $family == 'pts' {
+		@return 'PT Serif', Georgia, serif;
+	} @else {
+		@return $family;
+	}
+}

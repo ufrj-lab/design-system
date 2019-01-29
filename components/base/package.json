@@ -1,0 +1,66 @@
+{
+  "name": "@ufrj/mnv-base",
+  "description": "",
+  "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
+  "contributors": [
+    "Luiz Santos <luizggsantos@gmail.com> (https://ufrj.br)"
+  ],
+  "keywords": [
+    "design",
+    "system",
+    "web",
+    "polymer",
+    "components"
+  ],
+  "homepage": "http://mnv.olimpo.tic.ufrj.br",
+  "license": "AGPL-3.0",
+  "private": true,
+  "directories": {
+    "public": "public",
+    "test": "__tests__"
+  },
+  "main": "mnvBase.js",
+  "files": [
+    "lib"
+  ],
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "scripts": {
+    "build": "rm -fr assets/js && workbox copyLibraries assets/js && modernizr -c modernizr.json && rollup -c",
+    "new": "echo \"Error: run new from root\" && exit 1",
+    "test": "echo \"Error: run test from root\" && exit 1",
+    "modernizr": "modernizr -c modernizr.json",
+    "watch": "rollup -c -w",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath base/",
+    "watch:global": "lerna run watch",
+    "dev": "npm-run-all -p watch:global bs"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.0-rc.5",
+    "@webcomponents/webcomponentsjs": "^2.2.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "lerna": "^3.10.7",
+    "modernizr": "^3.6.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.1.2",
+    "workbox-cli": "^3.6.3"
+  },
+  "mnv": {
+    "scriptName": "mnvBase",
+    "slug": "mnv-base",
+    "targets": [
+      {
+        "type": "browser",
+        "injectCss": true
+      }
+    ],
+    "clear": [
+      "tmp"
+    ],
+    "copy": []
+  }
+}

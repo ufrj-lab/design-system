@@ -1,0 +1,6 @@
+@import '../../tools/main.scss';
+
+:host {
+	@include font($size: 0);
+	@include colors();
+}

@@ -1,0 +1,5 @@
+!.cypress
+components/**/lib
+components/**/public
+components/**/tmp
+components/**/externals
