@@ -13,7 +13,11 @@
     "polymer",
     "components"
   ],
-  "homepage": "http://mnv.olimpo.tic.ufrj.br",
+  "homepage": "http://ufrj.br",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ufrj-lab/mnv.git"
+  },
   "license": "AGPL-3.0",
   "private": false,
   "main": "lib/mnvElement.js",
