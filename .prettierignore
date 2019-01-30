@@ -2,4 +2,5 @@ components/**/lib
 components/**/public
 components/**/tmp
 components/**/externals
+.codeclimate.yml
 
