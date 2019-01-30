@@ -6,7 +6,7 @@
       "enabled": true,
       "channel": "eslint-5",
       "config": {
-        "config": "./.eslintrc-cc.json"
+        "config": "./.eslintrc.json"
       }
     },
     "fixme": {
@@ -23,5 +23,5 @@
     }
   },
 
-  "exclude_patterns": ["helpers/"]
+  "exclude_patterns": ["helpers/", "**/__test__", "**/assets"]
 }
