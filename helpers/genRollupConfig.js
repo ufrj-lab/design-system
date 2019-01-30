@@ -6,7 +6,7 @@ import clear from 'rollup-plugin-clear'
 import visualizer from 'rollup-plugin-visualizer'
 import url from 'rollup-plugin-url'
 
-const cleanPublic = name => [`../public/${name}.js`, `../public${name}.js.map`]
+const cleanPublic = name => [`../public/${name}.js`, `../public/${name}.js.map`]
 
 export const genNames = name => {
   const slug = name.replace('@ufrj/', '')
