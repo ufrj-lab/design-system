@@ -23,5 +23,11 @@
     }
   },
 
-  "exclude_patterns": ["helpers/", "**/__tests__", ".cypress", "**/assets"]
+  "exclude_patterns": [
+    "helpers/",
+    "**/__tests__",
+    ".cypress",
+    "**/assets",
+    ".github"
+  ]
 }
