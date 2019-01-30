@@ -23,5 +23,5 @@
     }
   },
 
-  "exclude_patterns": ["helpers/", "**/__tests__", "**/assets"]
+  "exclude_patterns": ["helpers/", "**/__tests__", ".cypress", "**/assets"]
 }
