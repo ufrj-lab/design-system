@@ -38,112 +38,126 @@ const rootPath = '../public/'
 const fontFaces = [
 	{
 		family: 'PT Serif',
-		style: 'normal',
-		weight: 400,
-		localNames: ['PT Serif', 'PTSerif-Regular'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${ptSerifRegularWoff2}` },
-			{ type: 'woff', url: `${rootPath}${ptSerifRegularWoff}` },
-		],
-	},
-	{
-		family: 'PT Serif',
-		style: 'italic',
-		weight: 400,
-		localNames: ['PT Serif Italic', 'PTSerif-Italic'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${ptSerifItalicWoff2}` },
-			{ type: 'woff', url: `${rootPath}${ptSerifItalicWoff}` },
-		],
-	},
-	{
-		family: 'PT Serif',
-		style: 'normal',
-		weight: 700,
-		localNames: ['PT Serif Bold', 'PTSerif-Bold'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${ptSerif700Woff2}` },
-			{ type: 'woff', url: `${rootPath}${ptSerif700Woff}` },
-		],
-	},
-	{
-		family: 'PT Serif',
-		style: 'italic',
-		weight: 700,
-		localNames: ['PT Serif Bold Italic', 'PTSerif-BoldItalic'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${ptSerif700ItalicWoff2}` },
-			{ type: 'woff', url: `${rootPath}${ptSerif700ItalicWoff}` },
+		variation: [
+			{
+				style: 'normal',
+				weight: 400,
+				localNames: ['PT Serif', 'PTSerif-Regular'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${ptSerifRegularWoff2}` },
+					{ type: 'woff', url: `${rootPath}${ptSerifRegularWoff}` },
+				],
+			},
+			{
+				style: 'italic',
+				weight: 400,
+				localNames: ['PT Serif Italic', 'PTSerif-Italic'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${ptSerifItalicWoff2}` },
+					{ type: 'woff', url: `${rootPath}${ptSerifItalicWoff}` },
+				],
+			},
+			{
+				style: 'normal',
+				weight: 700,
+				localNames: ['PT Serif Bold', 'PTSerif-Bold'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${ptSerif700Woff2}` },
+					{ type: 'woff', url: `${rootPath}${ptSerif700Woff}` },
+				],
+			},
+			{
+				style: 'italic',
+				weight: 700,
+				localNames: ['PT Serif Bold Italic', 'PTSerif-BoldItalic'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${ptSerif700ItalicWoff2}` },
+					{ type: 'woff', url: `${rootPath}${ptSerif700ItalicWoff}` },
+				],
+			},
 		],
 	},
 	{
 		family: 'Alegreya Sans SC',
-		style: 'normal',
-		weight: 500,
-		localNames: ['Alegreya Sans SC Medium', 'AlegreyaSansSC-Medium'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${alegreyaSansSC500Woff2}` },
-			{ type: 'woff', url: `${rootPath}${alegreyaSansSC500Woff}` },
+		variation: [
+			{
+				style: 'normal',
+				weight: 500,
+				localNames: ['Alegreya Sans SC Medium', 'AlegreyaSansSC-Medium'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${alegreyaSansSC500Woff2}` },
+					{ type: 'woff', url: `${rootPath}${alegreyaSansSC500Woff}` },
+				],
+			},
 		],
 	},
 	{
 		family: 'Alegreya Sans',
-		style: 'normal',
-		weight: 400,
-		localNames: ['Alegreya Sans Regular', 'AlegreyaSans-Regular'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${alegreyaSansRegularWoff2}` },
-			{ type: 'woff', url: `${rootPath}${alegreyaSansRegularWoff}` },
-		],
-	},
-	{
-		family: 'Alegreya Sans',
-		style: 'normal',
-		weight: 500,
-		localNames: ['Alegreya Sans Medium', 'AlegreyaSans-Medium'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${alegreyaSans500Woff2}` },
-			{ type: 'woff', url: `${rootPath}${alegreyaSans500Woff}` },
-		],
-	},
-	{
-		family: 'Alegreya Sans',
-		style: 'normal',
-		weight: 700,
-		localNames: ['Alegreya Sans Bold', 'AlegreyaSans-Bold'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${alegreyaSans700Woff2}` },
-			{ type: 'woff', url: `${rootPath}${alegreyaSans700Woff}` },
+		variation: [
+			{
+				style: 'normal',
+				weight: 400,
+				localNames: ['Alegreya Sans Regular', 'AlegreyaSans-Regular'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${alegreyaSansRegularWoff2}` },
+					{ type: 'woff', url: `${rootPath}${alegreyaSansRegularWoff}` },
+				],
+			},
+			{
+				style: 'normal',
+				weight: 500,
+				localNames: ['Alegreya Sans Medium', 'AlegreyaSans-Medium'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${alegreyaSans500Woff2}` },
+					{ type: 'woff', url: `${rootPath}${alegreyaSans500Woff}` },
+				],
+			},
+			{
+				style: 'normal',
+				weight: 700,
+				localNames: ['Alegreya Sans Bold', 'AlegreyaSans-Bold'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${alegreyaSans700Woff2}` },
+					{ type: 'woff', url: `${rootPath}${alegreyaSans700Woff}` },
+				],
+			},
 		],
 	},
 	{
 		family: 'Fira Code',
-		style: 'normal',
-		weight: 400,
-		localNames: ['Fira Code'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${firaCodeRegularWoff2}` },
-			{ type: 'woff', url: `${rootPath}${firaCodeRegularWoff}` },
+		variation: [
+			{
+				style: 'normal',
+				weight: 400,
+				localNames: ['Fira Code'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${firaCodeRegularWoff2}` },
+					{ type: 'woff', url: `${rootPath}${firaCodeRegularWoff}` },
+				],
+			},
 		],
 	},
 	{
 		family: 'Playfair Display',
-		style: 'italic',
-		weight: 400,
-		localNames: ['Playfair Display Italic', 'PlayfairDisplay-Italic'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${playfairDisplayItalicWoff2}` },
-			{ type: 'woff', url: `${rootPath}${playfairDisplayItalicWoff}` },
-		],
-	},
-	{
-		family: 'Playfair Display',
-		style: 'normal',
-		weight: 700,
-		localNames: ['Playfair Display Bold', 'PlayfairDisplay-Bold'],
-		urls: [
-			{ type: 'woff2', url: `${rootPath}${playfairDisplay700Woff2}` },
-			{ type: 'woff', url: `${rootPath}${playfairDisplay700Woff}` },
+		variation: [
+			{
+				style: 'italic',
+				weight: 400,
+				localNames: ['Playfair Display Italic', 'PlayfairDisplay-Italic'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${playfairDisplayItalicWoff2}` },
+					{ type: 'woff', url: `${rootPath}${playfairDisplayItalicWoff}` },
+				],
+			},
+			{
+				style: 'normal',
+				weight: 700,
+				localNames: ['Playfair Display Bold', 'PlayfairDisplay-Bold'],
+				urls: [
+					{ type: 'woff2', url: `${rootPath}${playfairDisplay700Woff2}` },
+					{ type: 'woff', url: `${rootPath}${playfairDisplay700Woff}` },
+				],
+			},
 		],
 	},
 ]
@@ -160,8 +174,19 @@ const genFontFace = (family, style, weight, localNames, urls) =>
 const genAllFontFaces = mtx =>
 	`@charset 'UTF-8';${mtx
 		.map(fontFace => {
-			const { family, style, weight, localNames, urls } = fontFace
-			return genFontFace(family, style, weight, localNames, urls)
+			const { family, variation } = fontFace
+
+			return variation
+				.map(data =>
+					genFontFace(
+						family,
+						data.style,
+						data.weight,
+						data.localNames,
+						data.urls
+					)
+				)
+				.join('')
 		})
 		.join('')}`
 
