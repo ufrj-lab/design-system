@@ -20,6 +20,9 @@
     },
     "scss-lint": {
       "enabled": true
+    },
+    "shellcheck": {
+      "enabled": true
     }
   },
 
