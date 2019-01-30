@@ -1,11 +1,41 @@
-const genConf = (ignore, server, open) => ({
+const { readdirSync } = require('fs')
+const { resolve } = require('path')
+
+const ignoreComponents = [
+  'src',
+  'lib',
+  '*.(json|md|js|css|scss)',
+  '.*',
+  '__tests__',
+  'node_modules',
+  'tmp',
+  'assets',
+]
+
+const genIgnoreComponents = (ignore, server) => {
+  const components = readdirSync(resolve(server)).filter(
+    item => item !== 'public' && item !== 'tools'
+  )
+
+  const result = [`${server}public/*.(map|woff|woff2)`]
+
+  components.forEach(comp => {
+    ignore.forEach(file => {
+      result.push(`${server}${comp}/${file}`)
+    })
+  })
+
+  return result
+}
+
+const genConf = (server, open, ignore = []) => ({
   ui: {
     port: 3001,
   },
   files: true,
   watchEvents: ['change'],
   watch: true,
-  ignore,
+  ignore: ignore.concat(genIgnoreComponents(ignoreComponents, server)),
   single: false,
   watchOptions: {
     ignoreInitial: false,
@@ -25,7 +55,7 @@ const genConf = (ignore, server, open) => ({
       toggles: true,
     },
   },
-  logLevel: 'info',
+  logLevel: 'debug',
   logPrefix: 'Browsersync',
   logConnections: false,
   logFileChanges: true,
@@ -43,9 +73,9 @@ const genConf = (ignore, server, open) => ({
   scrollRestoreTechnique: 'window.name',
   scrollElements: [],
   scrollElementMapping: [],
-  reloadDelay: 0,
+  reloadDelay: 1000,
   reloadDebounce: 500,
-  reloadThrottle: 0,
+  reloadThrottle: 250,
   plugins: [],
   injectChanges: true,
   startPath: null,
