@@ -1,22 +1,22 @@
 @mixin root() {
-	:root {
-		@for $i from $modular-scale-init to $modular-scale-size {
-			@include ms-respond('--ms-#{$i}', $i);
-		}
+  :root {
+    @for $i from $modular-scale-init to $modular-scale-size {
+      @include ms-respond('--ms-#{$i}', $i);
+    }
 
-		@for $i from $vertical-rhythm-init to $vertical-rhythm-size {
-			--vr-#{$i}: #{($i + 1) * $vertical-rhythm-base}rem;
-		}
+    @for $i from $vertical-rhythm-init to $vertical-rhythm-size {
+      --vr-#{$i}: #{($i + 1) * $vertical-rhythm-base}rem;
+    }
 
-		font-size: var(--ms-0);
+    font-size: var(--ms-0);
 
-		--color-dark: #{$color-dark};
-		--color-light: #{$color-light};
+    --color-dark: #{$color-dark};
+    --color-light: #{$color-light};
 
-		@include colors($root: true);
+    @include colors($root: true);
 
-		body {
-			@include colors($inherit: true);
-		}
-	}
+    body {
+      @include colors($inherit: true);
+    }
+  }
 }

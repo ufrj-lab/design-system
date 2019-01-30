@@ -1,14 +1,14 @@
 @mixin colors($root: null, $color: $default-base-color, $inherit: null) {
-	@if ($color != $default-base-color or $root != null) {
-		--scope-bg-color: #{nth($color, 2)};
-		--scope-text-color: #{set-text-color(nth($color, 1))};
-	}
+  @if ($color != $default-base-color or $root != null) {
+    --scope-bg-color: #{nth($color, 2)};
+    --scope-text-color: #{set-text-color(nth($color, 1))};
+  }
 
-	@if ($inherit == null) {
-		color: var(--scope-text-color);
-		background-color: var(--scope-bg-color);
-	} @else {
-		color: inherit;
-		background-color: inherit;
-	}
+  @if ($inherit == null) {
+    color: var(--scope-text-color);
+    background-color: var(--scope-bg-color);
+  } @else {
+    color: inherit;
+    background-color: inherit;
+  }
 }

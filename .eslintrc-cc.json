@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "mocha"],
   "env": {
     "node": true,
     "browser": true,
@@ -8,7 +8,8 @@
   "extends": ["eslint:recommended", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "no-var": "error"
+    "no-var": "error",
+    "mocha/no-exclusive-tests": "error"
   },
   "parserOptions": {
     "ecmaVersion": 2018,

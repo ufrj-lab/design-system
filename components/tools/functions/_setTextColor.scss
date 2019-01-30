@@ -1,7 +1,7 @@
 @function set-text-color($color) {
-	@if (lightness($color) > 50) {
-		@return var(--color-dark);
-	} @else {
-		@return var(--color-light);
-	}
+  @if (lightness($color) > 50) {
+    @return var(--color-dark);
+  } @else {
+    @return var(--color-light);
+  }
 }
