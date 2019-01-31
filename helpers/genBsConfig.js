@@ -13,112 +13,117 @@ const ignoreComponents = [
 ]
 
 const genIgnoreComponents = (ignore, server) => {
-  const components = readdirSync(resolve(server)).filter(
+  const components = readdirSync(server).filter(
     item => item !== 'public' && item !== 'tools'
   )
 
-  const result = [`${server}public/*.(map|woff|woff2)`]
+  const result = [`${server}/public/*.(map|woff|woff2)`]
 
   components.forEach(comp => {
     ignore.forEach(file => {
-      result.push(`${server}${comp}/${file}`)
+      result.push(`${server}/${comp}/${file}`)
     })
   })
 
   return result
 }
 
-const genConf = (server, open, ignore = []) => ({
-  ui: {
-    port: 3001,
-  },
-  files: true,
-  watchEvents: ['change'],
-  watch: true,
-  ignore: ignore.concat(genIgnoreComponents(ignoreComponents, server)),
-  single: false,
-  watchOptions: {
-    ignoreInitial: false,
-  },
-  server,
-  proxy: false,
-  port: 3000,
-  middleware: false,
-  serveStatic: [],
-  ghostMode: {
-    clicks: true,
-    scroll: true,
-    location: true,
-    forms: {
-      submit: true,
-      inputs: true,
-      toggles: true,
+const genConf = (server, open, ignore = []) => {
+  const serverResolved = resolve(server)
+  return {
+    ui: {
+      port: 3001,
     },
-  },
-  logLevel: 'debug',
-  logPrefix: 'Browsersync',
-  logConnections: false,
-  logFileChanges: true,
-  logSnippet: true,
-  rewriteRules: [],
-  open,
-  browser: 'default',
-  cors: false,
-  xip: false,
-  hostnameSuffix: false,
-  reloadOnRestart: false,
-  notify: true,
-  scrollProportionally: true,
-  scrollThrottle: 0,
-  scrollRestoreTechnique: 'window.name',
-  scrollElements: [],
-  scrollElementMapping: [],
-  reloadDelay: 1000,
-  reloadDebounce: 500,
-  reloadThrottle: 250,
-  plugins: [],
-  injectChanges: true,
-  startPath: null,
-  minify: true,
-  host: null,
-  localOnly: false,
-  codeSync: true,
-  timestamps: true,
-  clientEvents: [
-    'scroll',
-    'scroll:element',
-    'input:text',
-    'input:toggles',
-    'form:submit',
-    'form:reset',
-    'click',
-  ],
-  socket: {
-    socketIoOptions: {
-      log: false,
+    files: true,
+    watchEvents: ['change'],
+    watch: true,
+    server: serverResolved,
+    ignore: ignore.concat(
+      genIgnoreComponents(ignoreComponents, serverResolved)
+    ),
+    single: false,
+    watchOptions: {
+      ignoreInitial: false,
     },
-    socketIoClientConfig: {
-      reconnectionAttempts: 50,
+    proxy: false,
+    port: 3000,
+    middleware: false,
+    serveStatic: [],
+    ghostMode: {
+      clicks: true,
+      scroll: true,
+      location: true,
+      forms: {
+        submit: true,
+        inputs: true,
+        toggles: true,
+      },
     },
-    path: '/browser-sync/socket.io',
-    clientPath: '/browser-sync',
-    namespace: '/browser-sync',
-    clients: {
-      heartbeatTimeout: 5000,
+    logLevel: 'debug',
+    logPrefix: 'Browsersync',
+    logConnections: false,
+    logFileChanges: true,
+    logSnippet: true,
+    rewriteRules: [],
+    open,
+    browser: 'default',
+    cors: false,
+    xip: false,
+    hostnameSuffix: false,
+    reloadOnRestart: false,
+    notify: true,
+    scrollProportionally: true,
+    scrollThrottle: 0,
+    scrollRestoreTechnique: 'window.name',
+    scrollElements: [],
+    scrollElementMapping: [],
+    reloadDelay: 1000,
+    reloadDebounce: 500,
+    reloadThrottle: 250,
+    plugins: [],
+    injectChanges: true,
+    startPath: null,
+    minify: true,
+    host: null,
+    localOnly: false,
+    codeSync: true,
+    timestamps: true,
+    clientEvents: [
+      'scroll',
+      'scroll:element',
+      'input:text',
+      'input:toggles',
+      'form:submit',
+      'form:reset',
+      'click',
+    ],
+    socket: {
+      socketIoOptions: {
+        log: false,
+      },
+      socketIoClientConfig: {
+        reconnectionAttempts: 50,
+      },
+      path: '/browser-sync/socket.io',
+      clientPath: '/browser-sync',
+      namespace: '/browser-sync',
+      clients: {
+        heartbeatTimeout: 5000,
+      },
     },
-  },
-  tagNames: {
-    less: 'link',
-    scss: 'link',
-    css: 'link',
-    jpg: 'img',
-    jpeg: 'img',
-    png: 'img',
-    svg: 'img',
-    gif: 'img',
-    js: 'script',
-  },
-  injectNotification: true,
-})
+    tagNames: {
+      less: 'link',
+      scss: 'link',
+      css: 'link',
+      jpg: 'img',
+      jpeg: 'img',
+      png: 'img',
+      svg: 'img',
+      gif: 'img',
+      js: 'script',
+    },
+    injectNotification: true,
+  }
+}
 
 module.exports = genConf
