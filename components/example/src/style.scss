@@ -2,5 +2,5 @@
 
 :host {
   @include font($size: 0);
-  @include colors();
+  @include colorsBg();
 }
