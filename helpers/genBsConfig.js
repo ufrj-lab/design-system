@@ -59,7 +59,7 @@ const genConf = (server, open, ignore = []) => {
         toggles: true,
       },
     },
-    logLevel: 'debug',
+    logLevel: 'info',
     logPrefix: 'Browsersync',
     logConnections: false,
     logFileChanges: true,

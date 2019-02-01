@@ -1,16 +1,11 @@
-@mixin colorsBg($root: null, $color: $default-base-color, $inherit: null) {
-  @if ($color != $default-base-color or $root != null) {
+@mixin colorsBg($root: false, $color: $default-base-color) {
+  @if ($color != $default-base-color or $root != false) {
     --scope-bg-color: #{nth($color, 2)};
     --scope-text-color: #{set-text-color($color: nth($color, 1))};
   }
 
-  @if ($inherit == null) {
-    color: var(--scope-text-color);
-    background-color: var(--scope-bg-color);
-  } @else {
-    color: inherit;
-    background-color: inherit;
-  }
+  color: var(--scope-text-color);
+  background-color: var(--scope-bg-color);
 }
 
 @mixin colorTextShade($shade: 'black') {

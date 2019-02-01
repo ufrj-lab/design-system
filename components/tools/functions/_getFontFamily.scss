@@ -1,0 +1,20 @@
+@function get-font($family: as, $style: normal, $weight: 400) {
+  @if (map-has-key($fonts, $family)) {
+    $font-family: map-get($fonts, $family);
+    @if (map-has-key($font-family, 'variations')) {
+      $variations: map-get($font-family, 'variations');
+      @if (map-has-key($variations, $style)) {
+        $list-weights: map-get($variations, $style);
+        @each $val in $list-weights {
+          @if ($val == $weight) {
+            @return $font-family;
+          }
+        }
+        @error 'Não existe esse peso para a familia "#{$family}"!';
+      }
+      @error 'Não existe esse estilo para a familia "#{$family}"!';
+    }
+    @error 'Variações da familia "#{$family}" não foram configuradas!';
+  }
+  @error 'A familia "#{$family}" não existe!';
+}

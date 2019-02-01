@@ -31,7 +31,7 @@
     "new": "./tools/newcomponent.sh './' && npm run bootstrap",
     "test": "cypress open",
     "bs": "browser-sync start  -c ./bs-config.js",
-    "watch": "lerna run watch",
+    "watch": "lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch bs"
   },
   "devDependencies": {

@@ -10,14 +10,28 @@
 
     font-size: var(--ms-0);
 
-    --color-dark-black: #{rgba($color-dark, 0.9)};
-    --color-dark-gray: #{rgba($color-dark, 0.7)};
-    --color-light: #{rgba($color-light, 0.9)};
+    @each $name, $content in $colors {
+      @if (
+        map-has-key($content, 'schema') and map-get($content, 'schema') == true
+      ) {
+        @debug $name;
+      } @else {
+        $variations: map-remove($content, 'schema');
+        @each $key, $map-values in $variations {
+          $hex: map-get($map-values, 'hex');
+          $op: map-get($map-values, 'op');
 
-    @include colorsBg($root: true);
+          @each $name-op, $value-op in $op {
+            --color-#{$name}-#{$name-op}: #{rgba($hex, $value-op)};
+          }
+        }
+      }
+    }
+
+    // @include colorsBg($root: true);
 
     body {
-      @include colorsBg($inherit: true);
+      //  @include colorsBg($inherit: true);
     }
   }
 }
