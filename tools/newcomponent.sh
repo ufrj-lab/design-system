@@ -129,6 +129,10 @@ function createComponent {
 	rm $_new_dir/index.html
 	mv $_new_dir/index.html.new $_new_dir/index.html
 
+	node helpers/updateGreenKeeper.js > greenkeeper.json.new
+	rm greenkeeper.json
+	mv greenkeeper.json.new greenkeeper.json
+
 
 	$(cd $_new_dir)
 }

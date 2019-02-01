@@ -1,6 +1,10 @@
-@function set-text-color($color) {
+@function set-text-color($shade: 'black', $color: white) {
   @if (lightness($color) > 50) {
-    @return var(--color-dark);
+    @if ($shade == 'gray') {
+      @return var(--color-dark-gray);
+    } @else {
+      @return var(--color-dark-black);
+    }
   } @else {
     @return var(--color-light);
   }

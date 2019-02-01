@@ -20,6 +20,8 @@ export const genNames = name => {
   }
 }
 
+const prod = !process.env.ROLLUP_WATCH
+
 export const genConf = (target, slug, name, clearArr, inject) => ({
   input: 'src/index.js',
   output: {
@@ -34,9 +36,10 @@ export const genConf = (target, slug, name, clearArr, inject) => ({
     }
   },
   plugins: [
-    clear({
-      targets: clearArr.concat(cleanPublic(name)),
-    }),
+    prod &&
+      clear({
+        targets: clearArr.concat(cleanPublic(name)),
+      }),
     resolve(),
     postcss({
       inject: inject ? true : false,
@@ -50,19 +53,22 @@ export const genConf = (target, slug, name, clearArr, inject) => ({
       include: ['**/*.svg', '**/*.woff', '**/*.woff2'],
       emitFiles: true,
     }),
-    terser({
-      warnings: true,
-      mangle: {
-        module: true,
-      },
-      compress: true,
-    }),
-    filesize({
-      showBrotliSize: true,
-    }),
-    visualizer({
-      filename: `tmp/${slug}.${target}.html`,
-      title: `${slug} | ${target}`,
-    }),
+    prod &&
+      terser({
+        warnings: true,
+        mangle: {
+          module: true,
+        },
+        compress: true,
+      }),
+    prod &&
+      filesize({
+        showBrotliSize: true,
+      }),
+    prod &&
+      visualizer({
+        filename: `tmp/${slug}.${target}.html`,
+        title: `${slug} | ${target}`,
+      }),
   ],
 })
