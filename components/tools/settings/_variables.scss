@@ -1,86 +1,9 @@
-$colors: (
-  black: (
-    schema: false,
-    base: (
-      hex: #000,
-      op: (
-        70: 0.7,
-        90: 0.9,
-      ),
-    ),
-  ),
-  white: (
-    schema: false,
-    base: (
-      hex: #fff,
-      op: (
-        70: 0.7,
-        90: 0.9,
-      ),
-    ),
-  ),
-  mnv: (
-    schema: true,
-    base: (
-      hex: #00f,
-    ),
-  ),
-);
-
-$fonts: (
-  as: (
-    family: "'Alegreya Sans', sans-serif",
-    variations: (
-      normal: (
-        400,
-        500,
-        700,
-      ),
-    ),
-  ),
-  assc: (
-    family: "'Alegreya Sans SC', sans-serif",
-    variations: (
-      normal: (
-        500,
-      ),
-    ),
-  ),
-  pd: (
-    family: "'Playfair Display', serif",
-    variations: (
-      normal: (
-        700,
-      ),
-      italic: (
-        400,
-      ),
-    ),
-  ),
-  fc: (
-    family: "'Fira Code', monospace",
-    variations: (
-      normal: (
-        400,
-      ),
-    ),
-  ),
-  pts: (
-    family: "'PT Serif', Georgia, serif",
-    variations: (
-      normal: (
-        400,
-        700,
-      ),
-      italic: (
-        400,
-        700,
-      ),
-    ),
-  ),
-);
-
 // $default-base-color: ($color-light, var(--color-white-100));
+
+$remote: 'https://mnv.olimpo.tic.ufrj.br';
+
+// $root-path: $remote + '/';
+$root-path: '/';
 
 $modular-scale-init: -1;
 $modular-scale-size: 5;

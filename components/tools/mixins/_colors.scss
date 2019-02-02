@@ -8,8 +8,8 @@
   background-color: var(--scope-bg-color);
 }
 
-@mixin colorTextShade($shade: 'black') {
-  --scope-bg-color: var(--color-light);
+@mixin colorText($color) {
+  --scope-bg-color: var(--color-white-90);
   --scope-text-color: #{set-text-color($shade: $shade)};
 
   color: var(--scope-text-color);

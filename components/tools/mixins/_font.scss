@@ -1,15 +1,16 @@
 @mixin font(
   $family: 'as',
-  $style: normal,
   $size: 0,
   $line-height: 0,
-  $weight: 400
+  $weight: 400,
+  $style: normal
 ) {
   font-size: var(--ms-#{$size});
   line-height: var(--vr-#{$line-height});
 
-  $font-family: get-font($family, $style, $weight);
-  font-family: $family;
+  $font-family: #{map-get(get-font($family, $style, $weight), 'family')};
+
+  font-family: $font-family;
   font-style: $style;
   font-weight: $weight;
 }

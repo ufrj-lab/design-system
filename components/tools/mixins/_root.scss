@@ -1,4 +1,42 @@
 @mixin root() {
+  @each $name, $font in $fonts {
+    $family: "#{map-get($font, 'family')}";
+    $variations: map-get($font, 'variations');
+
+    @each $style, $map-weights in $variations {
+      @each $weight, $map-src in $map-weights {
+        $src: '';
+
+        $locals: map-get($map-src, 'local');
+        @each $local in $locals {
+          $src: $src + 'local("#{$local}"), ';
+        }
+
+        $urls: map-get($map-src, 'url');
+        $path: map-get($urls, 'path');
+        $types: map-get($urls, 'types');
+        $length: length($types);
+        @each $type in $types {
+          $i: index($types, $type);
+          @debug $i, $length;
+          @if ($i < $length) {
+            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}"), ';
+          } @else {
+            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}");';
+          }
+        }
+        @font-face {
+          font-family: $family;
+          font-style: $style;
+          font-weight: $weight;
+          src: #{$src};
+        }
+      }
+    }
+
+    // , map-get($font, 'safe'),
+    //  map-get($font, 'type')
+  }
   :root {
     @for $i from $modular-scale-init to $modular-scale-size {
       @include ms-respond('--ms-#{$i}', $i);
