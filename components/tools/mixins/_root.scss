@@ -1,6 +1,6 @@
 @mixin root() {
   @each $name, $font in $fonts {
-    $family: "#{map-get($font, 'family')}";
+    $family: map-get($font, 'family');
     $variations: map-get($font, 'variations');
 
     @each $style, $map-weights in $variations {
@@ -16,26 +16,23 @@
         $path: map-get($urls, 'path');
         $types: map-get($urls, 'types');
         $length: length($types);
+
         @each $type in $types {
           $i: index($types, $type);
-          @debug $i, $length;
           @if ($i < $length) {
             $src: $src + 'url("#{$path}.#{$type}") format("#{$type}"), ';
           } @else {
-            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}");';
+            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}")';
           }
         }
         @font-face {
-          font-family: $family;
+          font-family: #{$family};
           font-style: $style;
           font-weight: $weight;
           src: #{$src};
         }
       }
     }
-
-    // , map-get($font, 'safe'),
-    //  map-get($font, 'type')
   }
   :root {
     @for $i from $modular-scale-init to $modular-scale-size {

@@ -1,6 +1,8 @@
 @import '../../tools/main';
 
 :host {
-  // @include font();
+  @include font();
+  // , map-get($font, 'safe'),
+  //  map-get($font, 'type')
   // @include colorsBg();
 }

@@ -38,7 +38,7 @@
     "test": "echo \"Error: run test from root\" && exit 1",
     "watch": "rollup -c -w",
     "bs": "browser-sync start  -c ./bs-config.js --startPath example/",
-    "watch:global": "lerna run watch",
+    "watch:global": "lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {

@@ -38,7 +38,7 @@
     "modernizr": "modernizr -c modernizr.json",
     "watch": "rollup -c -w",
     "bs": "browser-sync start  -c ./bs-config.js --startPath base/",
-    "watch:global": "lerna run watch",
+    "watch:global": "lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
@@ -65,6 +65,8 @@
     "clear": [
       "tmp"
     ],
-    "copy": []
+    "copy": {
+      "assets/fonts": "../public/fonts"
+    }
   }
 }

@@ -5,7 +5,7 @@
       $variations: map-get($font-family, 'variations');
       @if (map-has-key($variations, $style)) {
         $list-weights: map-get($variations, $style);
-        @each $val in $list-weights {
+        @each $val, $c in $list-weights {
           @if ($val == $weight) {
             @return $font-family;
           }
