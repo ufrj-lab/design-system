@@ -38,7 +38,7 @@
     "modernizr": "modernizr -c modernizr.json",
     "watch": "rollup -c -w",
     "bs": "browser-sync start  -c ./bs-config.js --startPath base/",
-    "watch:global": "lerna run --parallel --stream watch",
+    "watch:global": "lerna run  --parallel  build && lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
@@ -58,15 +58,24 @@
     "slug": "mnv-base",
     "targets": [
       {
+        "type": "node",
+        "injectCss": true
+      },
+      {
         "type": "browser",
         "injectCss": true
       }
     ],
     "clear": [
-      "tmp"
+      "tmp",
+      "../public/fonts",
+      "../public/workbox-v3.6.3",
+      "../public/polyfills"
     ],
     "copy": {
-      "assets/fonts": "../public/fonts"
+      "assets/fonts": "../public/fonts",
+      "assets/js/workbox-v3.6.3": "../public/workbox-v3.6.3",
+      "../../node_modules/@webcomponents/webcomponentsjs/bundles": "../public/polyfills/bundles"
     }
   }
 }

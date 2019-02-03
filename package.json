@@ -24,7 +24,7 @@
   },
   "scripts": {
     "postinstall": "npm run bootstrap && npm run build",
-    "build": "rm -fr ./components/public && lerna run build",
+    "build": "rm -fr ./components/public && lerna run --parallel --stream build",
     "deploy": "npm run postinstall",
     "publish": "npm run deploy && lerna publish",
     "bootstrap": "lerna bootstrap --hoist",

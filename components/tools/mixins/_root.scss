@@ -1,30 +1,37 @@
-@mixin root() {
+@function gen-src-font-face($map-src) {
+  $src: '';
+
+  $locals: map-get($map-src, 'local');
+  $urls: map-get($map-src, 'url');
+
+  $path: map-get($urls, 'path');
+  $types: map-get($urls, 'types');
+  $length: length($types);
+
+  @each $local in $locals {
+    $src: $src + 'local("#{$local}"), ';
+  }
+
+  @each $type in $types {
+    $i: index($types, $type);
+    @if ($i < $length) {
+      $src: $src + 'url("#{$path}.#{$type}") format("#{$type}"), ';
+    } @else {
+      $src: $src + 'url("#{$path}.#{$type}") format("#{$type}")';
+    }
+  }
+
+  @return $src;
+}
+
+@mixin font-faces() {
   @each $name, $font in $fonts {
     $family: map-get($font, 'family');
     $variations: map-get($font, 'variations');
 
     @each $style, $map-weights in $variations {
       @each $weight, $map-src in $map-weights {
-        $src: '';
-
-        $locals: map-get($map-src, 'local');
-        @each $local in $locals {
-          $src: $src + 'local("#{$local}"), ';
-        }
-
-        $urls: map-get($map-src, 'url');
-        $path: map-get($urls, 'path');
-        $types: map-get($urls, 'types');
-        $length: length($types);
-
-        @each $type in $types {
-          $i: index($types, $type);
-          @if ($i < $length) {
-            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}"), ';
-          } @else {
-            $src: $src + 'url("#{$path}.#{$type}") format("#{$type}")';
-          }
-        }
+        $src: gen-src-font-face($map-src);
         @font-face {
           font-family: #{$family};
           font-style: $style;
@@ -34,38 +41,21 @@
       }
     }
   }
-  :root {
-    @for $i from $modular-scale-init to $modular-scale-size {
-      @include ms-respond('--ms-#{$i}', $i);
-    }
+}
 
-    @for $i from $vertical-rhythm-init to $vertical-rhythm-size {
-      --vr-#{$i}: #{($i + 1) * $vertical-rhythm-base}rem;
-    }
+@mixin root() {
+  @include font-faces();
+  :root {
+    @include vars-modular-scale();
+    @include vars-vertical-rhythm();
+    @include vars-color();
 
     font-size: var(--ms-0);
-
-    @each $name, $content in $colors {
-      @if (
-        map-has-key($content, 'schema') and map-get($content, 'schema') == true
-      ) {
-        @debug $name;
-      } @else {
-        $variations: map-remove($content, 'schema');
-        @each $key, $map-values in $variations {
-          $hex: map-get($map-values, 'hex');
-          $op: map-get($map-values, 'op');
-
-          @each $name-op, $value-op in $op {
-            --color-#{$name}-#{$name-op}: #{rgba($hex, $value-op)};
-          }
-        }
-      }
-    }
 
     // @include colorsBg($root: true);
 
     body {
+      margin: 0;
       //  @include colorsBg($inherit: true);
     }
   }

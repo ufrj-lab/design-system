@@ -1,0 +1,70 @@
+{
+  "name": "@ufrj/mnv-colors",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
+  "contributors": [
+    "Luiz Santos <luizggsantos@gmail.com> (https://ufrj.br)"
+  ],
+  "keywords": [
+    "design",
+    "system",
+    "web",
+    "polymer",
+    "components"
+  ],
+  "homepage": "http://ufrj.br",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ufrj-lab/mnv.git"
+  },
+  "license": "AGPL-3.0",
+  "private": false,
+  "main": "lib/mnvColors.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "new": "echo \"Error: run new from root\" && exit 1",
+    "test": "echo \"Error: run test from root\" && exit 1",
+    "watch": "rollup -c -w",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath colors/",
+    "watch:global": "lerna run --parallel --stream watch",
+    "dev": "npm-run-all -p watch:global bs"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.0-rc.5"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "lerna": "^3.10.8",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.1.2"
+  },
+  "mnv": {
+    "targets": [
+      {
+        "type": "node"
+      },
+      {
+        "type": "browser"
+      }
+    ],
+    "clear": [
+      "lib",
+      "tmp"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

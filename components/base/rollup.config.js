@@ -7,9 +7,11 @@ const { slug, script } = genNames(name)
 
 const { targets, clear, copy: cp } = mnv
 
+const prod = !process.env.ROLLUP_WATCH
+
 const conf = targets.map(target => {
   const result = genConf(target.type, slug, script, clear, target.injectCss)
-  result.plugins.push(copy({ ...cp }))
+  result.plugins.push(prod && copy({ ...cp }))
   return result
 })
 

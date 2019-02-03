@@ -1,6 +1,6 @@
 $path-fonts: $root-path + 'fonts/';
 $fonts: (
-  as: (
+  default: (
     type: sans-serif,
     family: 'Alegreya Sans',
     variations: (
@@ -47,7 +47,7 @@ $fonts: (
       ),
     ),
   ),
-  assc: (
+  sc: (
     type: sans-serif,
     family: 'Alegreya Sans SC',
     variations: (
@@ -68,7 +68,7 @@ $fonts: (
       ),
     ),
   ),
-  pd: (
+  display: (
     type: serif,
     family: 'Playfair Display',
     variations: (
@@ -104,7 +104,7 @@ $fonts: (
       ),
     ),
   ),
-  fc: (
+  code: (
     type: monospace,
     family: 'Fira Code',
     variations: (
@@ -124,7 +124,7 @@ $fonts: (
       ),
     ),
   ),
-  pts: (
+  text: (
     type: serif,
     safe: (
       Georgia,

@@ -1,0 +1,19 @@
+@import '../../tools/main';
+
+:host {
+  @include font();
+  .colors {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.25rem;
+    > .color {
+      height: 250px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-basis: calc(33% - 0.5rem);
+      margin: 0.25rem;
+    }
+  }
+}

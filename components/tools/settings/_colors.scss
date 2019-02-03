@@ -1,28 +1,21 @@
 $colors: (
-  black: (
-    schema: false,
-    base: (
-      hex: #000,
+  dark: (
+    #000: (
       op: (
         70: 0.7,
         90: 0.9,
       ),
     ),
   ),
-  white: (
-    schema: false,
-    base: (
-      hex: #fff,
+  light: (
+    #fff: (
       op: (
-        70: 0.7,
         90: 0.9,
       ),
     ),
   ),
-  mnv: (
-    schema: true,
-    base: (
-      hex: #00f,
-    ),
-  ),
+);
+
+$schemas: (
+  ufrj: #00f,
 );
