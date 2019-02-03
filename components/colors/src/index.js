@@ -8,7 +8,6 @@ export class MnvColors extends LitElement {
       <style>
         ${style}
       </style>
-      <slot></slot>
       <div class="colors">
         <div class="color primary-dark">Primary Dark</div>
         <div class="color primary">Primary</div>
@@ -28,6 +27,7 @@ export class MnvColors extends LitElement {
 
         <div class="color light">Light</div>
         <div class="color dark">Dark</div>
+        <slot></slot>
       </div>
     `
   }
