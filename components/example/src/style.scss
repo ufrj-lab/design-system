@@ -1,6 +1,5 @@
 @import '../../tools/main';
 
 :host {
-  @include font($size: 0);
-  @include colorsBg();
+  @include font();
 }

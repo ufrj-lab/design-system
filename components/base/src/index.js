@@ -1,7 +1,8 @@
 import '../assets/js/modernizr'
-import '@webcomponents/webcomponentsjs/webcomponents-loader'
 
-import '../assets'
+import './self'
+
+import '@webcomponents/webcomponentsjs/webcomponents-loader'
 
 import './style.scss'
 

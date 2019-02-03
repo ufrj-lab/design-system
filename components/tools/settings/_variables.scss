@@ -1,7 +1,9 @@
-$color-dark: #000;
-$color-light: #fff;
+// $default-base-color: ($color-light, var(--color-white-100));
 
-$default-base-color: ($color-light, var(--color-light));
+$remote: 'https://mnv.olimpo.tic.ufrj.br';
+
+// $root-path: $remote + '/';
+$root-path: '/public/';
 
 $modular-scale-init: -1;
 $modular-scale-size: 5;

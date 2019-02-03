@@ -1,6 +1,5 @@
 {
-  "name": "@ufrj/mnv-example",
-  "version": "0.0.2-alpha.0",
+  "name": "@ufrj/mnv-colors",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -19,8 +18,8 @@
     "url": "https://github.com/ufrj-lab/mnv.git"
   },
   "license": "AGPL-3.0",
-  "private": false,
-  "main": "lib/mnvElement.js",
+  "private": true,
+  "main": "lib/mnvColors.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -37,7 +36,7 @@
     "new": "echo \"Error: run new from root\" && exit 1",
     "test": "echo \"Error: run test from root\" && exit 1",
     "watch": "rollup -c -w",
-    "bs": "browser-sync start  -c ./bs-config.js --startPath example/",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath colors/",
     "watch:global": "lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
@@ -63,8 +62,5 @@
       "lib",
       "tmp"
     ]
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

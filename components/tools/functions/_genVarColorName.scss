@@ -1,0 +1,11 @@
+@function gen-var-color-name($name, $op: 100, $schema: null) {
+  $prefix: '--cl';
+  @if ($schema != null) {
+    $prefix: --sch-cl-;
+  }
+  @if ($op != 100) {
+    @return #{$prefix}-#{$name}-#{$op};
+  } @else {
+    @return #{$prefix}-#{$name};
+  }
+}

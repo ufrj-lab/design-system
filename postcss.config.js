@@ -9,6 +9,7 @@ module.exports = ctx => {
       'postcss-preset-env': {},
       'css-mqpacker': {},
       cssnano: {},
+      'postcss-reporter': {},
     },
   }
 }

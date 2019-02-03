@@ -1,23 +1,59 @@
+@function gen-src-font-face($map-src) {
+  $src: '';
+
+  $locals: map-get($map-src, 'local');
+  $urls: map-get($map-src, 'url');
+
+  $path: map-get($urls, 'path');
+  $types: map-get($urls, 'types');
+  $length: length($types);
+
+  @each $local in $locals {
+    $src: $src + 'local("#{$local}"), ';
+  }
+
+  @each $type in $types {
+    $i: index($types, $type);
+    @if ($i < $length) {
+      $src: $src + 'url("#{$path}.#{$type}") format("#{$type}"), ';
+    } @else {
+      $src: $src + 'url("#{$path}.#{$type}") format("#{$type}")';
+    }
+  }
+
+  @return $src;
+}
+
+@mixin font-faces() {
+  @each $name, $font in $fonts {
+    $family: map-get($font, 'family');
+    $variations: map-get($font, 'variations');
+
+    @each $style, $map-weights in $variations {
+      @each $weight, $map-src in $map-weights {
+        $src: gen-src-font-face($map-src);
+        @font-face {
+          font-family: #{$family};
+          font-style: $style;
+          font-weight: $weight;
+          src: #{$src};
+        }
+      }
+    }
+  }
+}
+
 @mixin root() {
+  @include font-faces();
   :root {
-    @for $i from $modular-scale-init to $modular-scale-size {
-      @include ms-respond('--ms-#{$i}', $i);
-    }
-
-    @for $i from $vertical-rhythm-init to $vertical-rhythm-size {
-      --vr-#{$i}: #{($i + 1) * $vertical-rhythm-base}rem;
-    }
-
+    @include vars-modular-scale();
+    @include vars-vertical-rhythm();
+    @include vars-color();
+    @include schemas();
     font-size: var(--ms-0);
-
-    --color-dark-black: #{rgba($color-dark, 0.9)};
-    --color-dark-gray: #{rgba($color-dark, 0.7)};
-    --color-light: #{rgba($color-light, 0.9)};
-
-    @include colorsBg($root: true);
-
-    body {
-      @include colorsBg($inherit: true);
+    .mnv {
+      margin: 0;
+      background-color: var(--sch-cl-primary);
     }
   }
 }
