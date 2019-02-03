@@ -1,6 +1,6 @@
 import '../assets/js/modernizr'
 
-import './wc'
+import './self'
 
 import '@webcomponents/webcomponentsjs/webcomponents-loader'
 

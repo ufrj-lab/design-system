@@ -1,6 +1,5 @@
 {
   "name": "@ufrj/mnv-colors",
-  "version": "0.0.0",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -19,7 +18,7 @@
     "url": "https://github.com/ufrj-lab/mnv.git"
   },
   "license": "AGPL-3.0",
-  "private": false,
+  "private": true,
   "main": "lib/mnvColors.js",
   "directories": {
     "lib": "lib",
@@ -63,8 +62,5 @@
       "lib",
       "tmp"
     ]
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

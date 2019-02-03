@@ -13,21 +13,20 @@ export class MnvColors extends LitElement {
         <div class="color primary">Primary</div>
         <div class="color primary-light">Primary Light</div>
 
-        <div class="color secundary-dark">Secundary Dark</div>
-        <div class="color secundary">Secundary</div>
-        <div class="color secundary-light">Secundary Light</div>
+        <div class="color util-confirm">Util Confirm</div>
+        <div class="color util-warning">Util Warning</div>
+        <div class="color util-error">Util Error</div>
 
-        <div class="color gray-dark">Gray Dark</div>
-        <div class="color gray">Gray</div>
-        <div class="color gray-light">Gray Light</div>
+        <div class="color colors">
+          <div class="color light">Light</div>
+          <div class="color light-90">Light 90%</div>
+        </div>
 
-        <div class="color confirm">Confirm</div>
-        <div class="color warning">Warning</div>
-        <div class="color error">Error</div>
-
-        <div class="color light">Light</div>
-        <div class="color dark">Dark</div>
-        <slot></slot>
+        <div class="color colors">
+          <div class="color dark">Dark</div>
+          <div class="color dark-80">Dark 80%</div>
+          <div class="color dark-70">Dark 70%</div>
+        </div>
       </div>
     `
   }
