@@ -3,18 +3,27 @@
   $size: 0,
   $line-height: 0,
   $weight: 400,
-  $style: normal
+  $style: normal,
+  $init: null
 ) {
   font-size: var(--ms-#{$size});
   line-height: var(--vr-#{$line-height});
 
-  $font: get-font($family, $style, $weight);
+  @if (
+    $family != 'default' or $weight != 400 or $style != normal or $init != null
+  ) {
+    $font: get-font($family, $style, $weight);
 
-  $font-family: map-get($font, 'family');
-  $safe: map-get($font, 'safe');
-  $type: map-get($font, 'type');
+    $font-family: map-get($font, 'family');
+    $safe: map-get($font, 'safe');
+    $type: map-get($font, 'type');
 
-  font-family: #{$font-family, $safe, $type};
-  font-style: $style;
-  font-weight: $weight;
+    --scope-font-family: #{$font-family, $safe, $type};
+    --scope-font-style: #{$style};
+    --scope-font-weight: #{$weight};
+  }
+
+  font-family: var(--scope-font-family);
+  font-style: var(--scope-font-style);
+  font-weight: var(--scope-font-weight);
 }
