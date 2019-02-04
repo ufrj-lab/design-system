@@ -1,35 +1,41 @@
 @import '../../tools/main';
 
 :host {
-  @include font();
+  @include font($family: 'display', $weight: 700, $style: 'normal');
   .color {
     &.colors {
       flex-direction: column;
       align-items: normal !important;
     }
     &.primary {
-      background-color: var(--sch-cl-primary);
+      @include colorBg('primary');
     }
     &.primary-dark {
-      background-color: var(--sch-cl-primary-dark);
+      @include colorBg('primary-dark');
     }
     &.primary-light {
-      background-color: var(--sch-cl-primary-light);
+      @include colorBg('primary-light');
+    }
+    &.primary-white {
+      @include colorBg('primary-white');
+    }
+    &.primary-gray {
+      @include colorBg('primary-gray');
+    }
+    &.primary-black {
+      @include colorBg('primary-black');
     }
     &.util-confirm {
-      background-color: var(--sch-cl-util-confirm);
+      @include colorBg('util-confirm');
     }
     &.util-warning {
-      background-color: var(--sch-cl-util-warn);
+      @include colorBg('util-warn');
     }
     &.util-error {
-      background-color: var(--sch-cl-util-error);
+      @include colorBg('util-error');
     }
     &.dark {
       background-color: var(--cl-dark);
-    }
-    &.dark-80 {
-      background-color: var(--cl-dark-80);
     }
     &.dark-70 {
       background-color: var(--cl-dark-70);
@@ -37,16 +43,13 @@
     &.light {
       background-color: var(--cl-light);
     }
-    &.light-90 {
-      background-color: var(--cl-light-90);
-    }
   }
 
   .colors {
     display: flex;
     flex-wrap: wrap;
     > .color {
-      height: 33.33vh;
+      height: 25vh;
       min-width: 100px;
       flex: 1;
       display: flex;

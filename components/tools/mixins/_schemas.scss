@@ -1,12 +1,45 @@
 @mixin schemas() {
-  @each $name, $map-color in $schemas {
-    @debug $name, $map-color;
+  @each $name, $map-hue in $schemas {
     .mnv-schema-#{$name} {
-      @each $colorName, $configs in $map-color {
-        @each $color, $fallbacks in $configs {
+      @each $colorName, $configs in $map-hue {
+        @each $hue, $fallbacks in $configs {
+          $color: hsl($hue, 100%, 30%);
           --sch-cl-#{$colorName}: #{$color};
-          --sch-cl-#{$colorName}-dark: #{darken-color($color)};
-          --sch-cl-#{$colorName}-light: #{lighten-color($color)};
+          @each $variation, $value in $fallbacks {
+            @if ($value == auto) {
+              $exist: false;
+              @if ($variation == 'dark') {
+                --sch-cl-#{$colorName}-#{$variation}: #{darken-color($color)};
+                $exist: true;
+              } @else if($variation == 'light') {
+                --sch-cl-#{$colorName}-#{$variation}: #{lighten-color($color)};
+                $exist: true;
+              } @else if($variation == white) {
+                $hue: hue($color);
+                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 45%, 98%)};
+                $exist: true;
+              } @else if($variation == gray) {
+                $hue: hue($color);
+                @debug $hue;
+                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 43%, 93%)};
+
+                $exist: true;
+              } @else if($variation == black) {
+                $hue: hue($color);
+                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 100%, 6%)};
+                $exist: true;
+              }
+              @if ($exist == false) {
+                @error 'Não existe a opção automatica para "#{$variation}"';
+              }
+            } @else {
+              @if ($variation == 'dark') {
+                --sch-cl-#{$colorName}-#{$variation}: #{darken-color($value)};
+              } @else {
+                --sch-cl-#{$colorName}-#{$variation}: #{$value};
+              }
+            }
+          }
         }
       }
     }

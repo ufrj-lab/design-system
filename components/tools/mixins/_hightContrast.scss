@@ -1,0 +1,7 @@
+@mixin hight-contrast() {
+  .mnv-ac-hc {
+    @each $name, $color in $hight-contrast {
+      --ac-hc-#{$name}: #{$color};
+    }
+  }
+}

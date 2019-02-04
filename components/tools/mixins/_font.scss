@@ -23,7 +23,7 @@
     --scope-font-weight: #{$weight};
   }
 
-  font-family: var(--scope-font-family);
+  font-family: var(--ac-font, var(--scope-font-family));
   font-style: var(--scope-font-style);
   font-weight: var(--scope-font-weight);
 }

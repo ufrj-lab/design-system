@@ -5,16 +5,11 @@ $colors: (
     #000: (
       op: (
         70: 0.7,
-        80: 0.8,
       ),
     ),
   ),
   light: (
-    #fff: (
-      op: (
-        90: 0.9,
-      ),
-    ),
+    #fff: (),
   ),
 );
 
@@ -25,27 +20,36 @@ $dark: rgba(nth(map-keys(map-get($colors, 'dark')), 1), $base-op);
 $schemas: (
   ufrj: (
     primary: (
-      #003399: (),
-    ),
-    util-confirm: (
-      #00b627: (),
-    ),
-    util-warn: (
-      #e0be00: (),
-    ),
-    util-error: (
-      #990026: (),
+      220: (
+        dark: auto,
+        light: auto,
+        white: auto,
+        gray: auto,
+        black: auto,
+      ),
     ),
   ),
-  hc: (
-    variations: false,
-    background: #000,
-    link: #0ff,
-    text: #fff,
-    border: #fff,
-    nav: #f0f,
-    confirm: #0f0,
-    error: #f00,
-    warn: #ff0,
+);
+
+$utils: (
+  confirm: (
+    #00b627: (),
   ),
+  warn: (
+    #e0be00: (),
+  ),
+  error: (
+    #990026: (),
+  ),
+);
+
+$hight-contrast: (
+  bg: #000,
+  link: #0ff,
+  text: #fff,
+  border: #fff,
+  nav: #f0f,
+  confirm: #0f0,
+  error: #f00,
+  warn: #ff0,
 );

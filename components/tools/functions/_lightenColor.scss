@@ -1,5 +1,6 @@
-@function lighten-color($c) {
-  $color: lighten($c, 10%);
+@function lighten-color($c, $amount: 10%) {
+  $color: lighten($c, $amount);
+  @debug $c, $color;
   @while (contrast-checker($color, $dark) == 'false') {
     $color: lighten($color, 1%);
   }

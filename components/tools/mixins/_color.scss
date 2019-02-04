@@ -1,0 +1,13 @@
+@mixin colorBg($name: null, $type: sch, $hc: text, $init: false) {
+  @if ($init == true or $name != null) {
+    @if ($name == null) {
+      $name: primary;
+      --scope-bg-cl: var(--#{$type}-cl-#{$name});
+    } @else {
+      --scope-bg-cl: var(--#{$type}-cl-#{$name});
+    }
+    --scope-text-cl: black;
+  }
+  background-color: var(--ac-hc-bg, var(--scope-bg-cl));
+  color: var(--ac-hc-#{$hc}, var(--scope-text-cl));
+}
