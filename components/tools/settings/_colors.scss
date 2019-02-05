@@ -17,6 +17,14 @@ $light: rgba(nth(map-keys(map-get($colors, 'light')), 1), $base-op);
 
 $dark: rgba(nth(map-keys(map-get($colors, 'dark')), 1), $base-op);
 
+$colors-auto-variations: (
+  dark: (),
+  light: (),
+  white: (),
+  gray: (),
+  black: (),
+);
+
 $schemas: (
   ufrj: (
     primary: (
