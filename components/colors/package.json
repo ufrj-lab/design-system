@@ -41,7 +41,7 @@
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
-    "lit-element": "^2.0.0-rc.5"
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
