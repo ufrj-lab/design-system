@@ -8,40 +8,43 @@
       align-items: normal !important;
     }
     &.primary {
-      @include colorBg('primary');
+      @include colorBg('primary', $hc: text);
     }
     &.primary-dark {
-      @include colorBg('primary-dark');
+      @include colorBg('primary', $color: 'dark', $hc: text);
     }
     &.primary-light {
-      @include colorBg('primary-light');
+      @include colorBg('primary', $color: 'light', $hc: text);
     }
     &.primary-white {
-      @include colorBg('primary-white');
+      @include colorBg('primary', $color: 'white', $hc: text);
     }
     &.primary-gray {
-      @include colorBg('primary-gray');
+      @include colorBg('primary', $color: 'gray', $hc: text);
     }
     &.primary-black {
-      @include colorBg('primary-black');
+      @include colorBg('primary', $color: 'black', $hc: text);
     }
     &.util-confirm {
-      @include colorBg('util-confirm');
+      @include colorBg('util', $color: 'confirm', $hc: text);
     }
     &.util-warning {
-      @include colorBg('util-warn');
+      @include colorBg('util', $color: 'warn', $hc: text);
     }
     &.util-error {
-      @include colorBg('util-error');
+      @include colorBg('util', $color: 'error', $hc: text);
     }
     &.dark {
-      background-color: var(--cl-dark);
+      @include colorBg('text', $color: 'dark', $silent: true, $hc: text);
     }
     &.dark-70 {
-      background-color: var(--cl-dark-70);
+      @include colorBg('text', $color: 'dark-70', $silent: true, $hc: text);
     }
     &.light {
-      background-color: var(--cl-light);
+      @include colorBg('text', $color: 'light', $silent: true, $hc: text);
+    }
+    &.light-70 {
+      @include colorBg('text', $color: 'light-70', $silent: true, $hc: text);
     }
   }
 

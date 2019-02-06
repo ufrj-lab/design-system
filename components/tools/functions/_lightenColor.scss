@@ -1,8 +1,5 @@
 @function lighten-color($c, $amount: 10%) {
   $color: lighten($c, $amount);
-  @debug (red($color) * 299) + (green($color) * 587) + (blue($color) * 114) /
-      1000,
-    ((red($dark) * 299) + (green($dark) * 587) + (blue($dark) * 114) / 1000)/2;
   @while (colour-difference($dark, $color) == 'false') {
     $color: lighten($color, 1%);
   }

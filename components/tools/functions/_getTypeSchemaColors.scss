@@ -1,0 +1,11 @@
+@function get-type-schema-colors($default) {
+  $ref: map-get($colors-auto-variations, 'default');
+  @if ($default != true) {
+    @if ($ref == 'day') {
+      @return 'night';
+    } @else {
+      @return 'day';
+    }
+  }
+  @return $ref;
+}

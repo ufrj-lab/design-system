@@ -9,16 +9,21 @@
   font-size: var(--ms-#{$size});
   line-height: var(--vr-#{$line-height});
 
+  $fallback: null;
+
   @if (
     $family != 'default' or $weight != 400 or $style != normal or $init != null
   ) {
+    $exist: true;
     $font: get-font($family, $style, $weight);
 
     $font-family: map-get($font, 'family');
     $safe: map-get($font, 'safe');
     $type: map-get($font, 'type');
 
-    --scope-font-family: #{$font-family, $safe, $type};
+    $fallback: $font-family, $safe, $type;
+
+    --scope-font-family: #{$fallback};
     --scope-font-style: #{$style};
     --scope-font-weight: #{$weight};
   }

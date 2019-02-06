@@ -1,11 +1,55 @@
-@mixin colorBg($name: null, $type: sch, $hc: text, $init: false) {
-  @if ($init == true or $name != null) {
-    @if ($name == null) {
-      --scope-bg-cl: var(--#{$type}-cl-primary-white);
-    } @else {
-      --scope-bg-cl: var(--#{$type}-cl-#{$name});
+@mixin colorBg(
+  $name: null,
+  $type: null,
+  $color: null,
+  $hc: null,
+  $init: false,
+  $silent: false
+) {
+  @if ($type == null) {
+    $type: $name;
+  }
+
+  @if ($type == text) {
+    $name: '';
+    @if ($silent != true) {
+      @warn 'Cores de texto "--cl-text" não devem ser usadas em background!';
     }
-    --scope-text-cl: black;
+  }
+
+  $color-test: null;
+
+  @if ($color-test == null) {
+    @debug $type;
+    $color-test: get-color($type);
+  }
+
+  @if ($type != text and $type != util) {
+    $type: 'sch';
+    $name: #{-#{$name}};
+  } @else {
+    $name: '';
+  }
+
+  @if ($hc == null) {
+    @warn 'A escolha de uma cor alternativa para o texto em alto contraste é obrigatoria. Como padrão sera configurada a cor "text". Configure a variavel "$hc" em "colorBg()" para desativar esse alerta.';
+  }
+
+  @if ($color != null) {
+    $color: #{-#{$color}};
+  } @else {
+    $color: '';
+  }
+
+  @if ($init == true or $name != null) {
+    $prefix: get-color-prefix($type);
+    @if ($name == null) {
+      --scope-bg-cl: var(--sch-cl-primary-white);
+    } @else {
+      --scope-bg-cl: var(#{$prefix}#{$name}#{$color});
+    }
+    @debug $color-test;
+    --scope-text-cl: var(--cl-text-dark);
   }
   background-color: var(--ac-hc-bg, var(--scope-bg-cl));
   color: var(--ac-hc-#{$hc}, var(--scope-text-cl));

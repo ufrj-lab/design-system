@@ -23,6 +23,7 @@ export class MnvColors extends LitElement {
 
         <div class="color colors">
           <div class="color light">Light</div>
+          <div class="color light-70">Light 70%</div>
         </div>
 
         <div class="color colors">

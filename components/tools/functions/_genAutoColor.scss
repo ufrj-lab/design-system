@@ -1,0 +1,12 @@
+@function gen-auto-color($hue, $name: 'primary', $default: true) {
+  $ref: get-type-schema-colors($default);
+  $config: map-get(map-get($colors-auto-variations, $ref), $name);
+  $s: map-get($config, 's');
+  $l: map-get($config, 'l');
+
+  @if (map_has_key($config, 'ah')) {
+    $ah: map-get($config, 'ah');
+    @return adjust-hue(hsl($hue, $s, $l), $ah);
+  }
+  @return hsl($hue, $s, $l);
+}

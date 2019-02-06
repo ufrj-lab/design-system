@@ -1,46 +1,60 @@
+@mixin schema-values($map-hue, $default: true) {
+  @each $colorName, $configs in $map-hue {
+    @each $hue, $fallbacks in $configs {
+      $prefix: gen-var-color-name($colorName);
+      #{$prefix}: #{gen-auto-color($hue)};
+      @each $variation, $value in $fallbacks {
+        @if ($value == auto) {
+          @if ($variation == util) {
+            $type: get-type-schema-colors($default);
+            $util: map-get(map-get($colors-auto-variations, $type), $variation);
+            $map-util-colors: map-get($util, 'hue');
+            @each $name, $hue in $map-util-colors {
+              @if (type-of($hue) == 'map') {
+                $h: map-get($hue, 'hue');
+                $al: map-get($hue, 'al');
+                #{gen-var-color-name($name, 'util')}: #{lighten(
+                    gen-auto-color($h, $variation, $default),
+                    $al
+                  )};
+              } @else {
+                #{gen-var-color-name($name, 'util')}: #{gen-auto-color(
+                    $hue,
+                    $variation,
+                    $default
+                  )};
+              }
+            }
+          } @else if($variation == text) {
+          } @else {
+            #{$prefix}-#{$variation}: #{gen-auto-color(
+                $hue,
+                $variation,
+                $default
+              )};
+          }
+        } @else {
+          @if ($variation == util) {
+            @debug $variation, $value;
+          } @else if($variation == text) {
+            @debug $variation, $value;
+          } @else {
+            $s: map-get($value, 's');
+            $l: map-get($value, 'l');
+            $ah: map-get($value, 'ah');
+            #{$prefix}-#{$variation}: #{adjust-hue(hsl($hue, $s, $l), $ah)};
+          }
+        }
+      }
+    }
+  }
+}
 @mixin schemas() {
   @each $name, $map-hue in $schemas {
     .mnv-schema-#{$name} {
-      @each $colorName, $configs in $map-hue {
-        @each $hue, $fallbacks in $configs {
-          $color: hsl($hue, 100%, 30%);
-          --sch-cl-#{$colorName}: #{$color};
-          @each $variation, $value in $fallbacks {
-            @if ($value == auto) {
-              $exist: false;
-              @if ($variation == 'dark') {
-                --sch-cl-#{$colorName}-#{$variation}: #{darken-color($color)};
-                $exist: true;
-              } @else if($variation == 'light') {
-                --sch-cl-#{$colorName}-#{$variation}: #{lighten-color($color)};
-                $exist: true;
-              } @else if($variation == white) {
-                $hue: hue($color);
-                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 45%, 98%)};
-                $exist: true;
-              } @else if($variation == gray) {
-                $hue: hue($color);
-                @debug $hue;
-                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 43%, 93%)};
-
-                $exist: true;
-              } @else if($variation == black) {
-                $hue: hue($color);
-                --sch-cl-#{$colorName}-#{$variation}: #{hsl($hue, 100%, 6%)};
-                $exist: true;
-              }
-              @if ($exist == false) {
-                @error 'Não existe a opção automatica para "#{$variation}"';
-              }
-            } @else {
-              @if ($variation == 'dark') {
-                --sch-cl-#{$colorName}-#{$variation}: #{darken-color($value)};
-              } @else {
-                --sch-cl-#{$colorName}-#{$variation}: #{$value};
-              }
-            }
-          }
-        }
+      @include schema-values($map-hue);
+      &.--alt-cl {
+        @include schema-values($map-hue, false);
       }
     }
   }

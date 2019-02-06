@@ -1,6 +1,6 @@
-$base-op: 0.97;
+$default-text-op: 0.95;
 
-$colors: (
+$default-text-colors: (
   dark: (
     #000: (
       op: (
@@ -9,20 +9,104 @@ $colors: (
     ),
   ),
   light: (
-    #fff: (),
+    #fff: (
+      op: (
+        70: 0.7,
+      ),
+    ),
   ),
 );
 
-$light: rgba(nth(map-keys(map-get($colors, 'light')), 1), $base-op);
-
-$dark: rgba(nth(map-keys(map-get($colors, 'dark')), 1), $base-op);
-
 $colors-auto-variations: (
-  dark: (),
-  light: (),
-  white: (),
-  gray: (),
-  black: (),
+  default: 'day',
+  day: (
+    primary: (
+      ah: 0deg,
+      s: 100%,
+      l: 30%,
+    ),
+    dark: (
+      ah: 0deg,
+      s: 100%,
+      l: 20%,
+    ),
+    light: (
+      ah: 0deg,
+      s: 100%,
+      l: 69%,
+    ),
+    white: (
+      ah: -60deg,
+      s: 45%,
+      l: 98%,
+    ),
+    gray: (
+      ah: -30deg,
+      s: 43%,
+      l: 93%,
+    ),
+    black: (
+      ah: 0deg,
+      s: 100%,
+      l: 6%,
+    ),
+    util: (
+      hue: (
+        confirm: 133,
+        warn: (
+          hue: 51,
+          al: 8%,
+        ),
+        error: 345,
+      ),
+      s: 100%,
+      l: 36%,
+    ),
+  ),
+  night: (
+    primary: (
+      ah: 0deg,
+      s: 100%,
+      l: 30%,
+    ),
+    dark: (
+      ah: 0deg,
+      s: 100%,
+      l: 20%,
+    ),
+    light: (
+      ah: 0deg,
+      s: 100%,
+      l: 69%,
+    ),
+    white: (
+      ah: -60deg,
+      s: 45%,
+      l: 98%,
+    ),
+    gray: (
+      ah: -30deg,
+      s: 43%,
+      l: 93%,
+    ),
+    black: (
+      ah: 0deg,
+      s: 100%,
+      l: 6%,
+    ),
+    util: (
+      hue: (
+        confirm: 133,
+        warn: (
+          hue: 51,
+          al: 8%,
+        ),
+        error: 345,
+      ),
+      s: 100%,
+      l: 36%,
+    ),
+  ),
 );
 
 $schemas: (
@@ -34,20 +118,9 @@ $schemas: (
         white: auto,
         gray: auto,
         black: auto,
+        util: auto,
       ),
     ),
-  ),
-);
-
-$utils: (
-  confirm: (
-    #00b627: (),
-  ),
-  warn: (
-    #e0be00: (),
-  ),
-  error: (
-    #990026: (),
   ),
 );
 
