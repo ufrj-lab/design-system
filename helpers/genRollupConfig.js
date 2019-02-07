@@ -6,6 +6,7 @@ import clear from 'rollup-plugin-clear'
 import visualizer from 'rollup-plugin-visualizer'
 import url from 'rollup-plugin-url'
 import replace from 'rollup-plugin-replace'
+import copy from 'rollup-plugin-copy'
 
 const cleanPublic = name => [
   `../_public/${name}.js`,
@@ -14,12 +15,12 @@ const cleanPublic = name => [
 
 const toCapitalizer = str => `${str[0].toUpperCase()}${str.slice(1)}`
 
-export const genNames = name => {
+const genNames = name => {
   const slug = name.replace('@ufrj/', '')
 
   return {
     slug,
-    script: slug
+    name: slug
       .split('-')
       .map((val, i) => (i < 1 ? val : toCapitalizer(val)))
       .join(''),
@@ -28,11 +29,7 @@ export const genNames = name => {
 
 const noBundles = dependencies => {
   const keys = Object.keys(dependencies)
-  let enabled = 0
-
-  keys.forEach(str =>
-    str.includes('@ufrj/') && !enabled ? (enabled = true) : (enabled = false)
-  )
+  let enabled = false
 
   const external = {
     node: keys,
@@ -53,11 +50,11 @@ const noBundles = dependencies => {
         .join('')}.js`
       replace['browser'][name] = newName
       external['browser'].push(newName)
-      enabled += 1
+      if (!enabled) enabled = true
     }
   })
 
-  if (enabled > 0) {
+  if (enabled) {
     replace['browser']['delimiters'] = ['', '']
   }
 
@@ -66,69 +63,67 @@ const noBundles = dependencies => {
 
 const prod = !process.env.ROLLUP_WATCH
 
-export const genConf = (
-  target,
-  slug,
-  name,
-  clearArr,
-  inject,
-  jail = '/',
-  dependencies
-) => {
+export const genConf = (pkgName, mnv, dependencies, jail = '/') => {
   const { external, replace: replaceConf } = noBundles(dependencies)
-  return {
-    input: 'src/index.js',
-    output: {
-      file: `${target === 'node' ? 'lib' : '../_public'}/${name}.js`,
-      format: 'esm',
-      sourcemap: true,
-    },
-    external: external[target],
-    onwarn(warning) {
-      if (warning.code !== 'CIRCULAR_DEPENDENCY') {
-        console.error(`(!) ${warning.message}`)
-      }
-    },
-    plugins: [
-      prod &&
-        clear({
-          targets: clearArr.concat(cleanPublic(name)),
+  const { slug, name } = genNames(pkgName)
+  const { targets, clear: clearArr, copy: cp } = mnv
+  return targets.map(tar => {
+    const { type: target, injectCss: inject } = tar
+    return {
+      input: 'src/index.js',
+      output: {
+        file: `${target === 'node' ? 'lib' : '../_public'}/${name}.js`,
+        format: 'esm',
+        sourcemap: true,
+      },
+      external: external[target],
+      onwarn(warning) {
+        if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+          console.error(`(!) ${warning.message}`)
+        }
+      },
+      plugins: [
+        prod &&
+          clear({
+            targets: clearArr.concat(cleanPublic(name)),
+          }),
+        prod && cp && copy(cp[target]),
+        resolve({
+          browser: target === 'browser',
+          jail: target === 'browser' ? jail : '/',
         }),
-      resolve({
-        browser: target === 'browser',
-        jail: target === 'browser' ? jail : '/',
-      }),
-      postcss({
-        inject: inject ? true : false,
-        config: {
-          path: `../../postcss.config.js`,
-          ctx: {},
-        },
-      }),
-      url({
-        limit: 10 * 1024,
-        include: ['**/*.svg', '**/*.woff', '**/*.woff2'],
-        emitFiles: true,
-      }),
-      Object.keys(replaceConf[target]).length > 0 &&
-        replace(replaceConf[target]),
-      prod &&
-        terser({
-          warnings: true,
-          mangle: {
-            module: true,
+        postcss({
+          inject: inject ? true : false,
+          config: {
+            path: `../../postcss.config.js`,
+            ctx: {},
           },
-          compress: true,
         }),
-      prod &&
-        filesize({
-          showBrotliSize: true,
+        url({
+          limit: 10 * 1024,
+          include: ['**/*.svg', '**/*.woff', '**/*.woff2'],
+          emitFiles: true,
         }),
-      prod &&
-        visualizer({
-          filename: `tmp/${slug}.${target}.html`,
-          title: `${slug} | ${target}`,
-        }),
-    ],
-  }
+        Object.keys(replaceConf[target]).length > 0 &&
+          replace(replaceConf[target]),
+        prod &&
+          terser({
+            warnings: true,
+            mangle: {
+              module: true,
+            },
+            compress: true,
+          }),
+        prod &&
+          filesize({
+            showBrotliSize: true,
+          }),
+        prod &&
+          visualizer({
+            filename: `tmp/${slug}.${target}.html`,
+            title: `${slug} | ${target}`,
+          }),
+      ],
+    }
+  })
 }

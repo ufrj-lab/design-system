@@ -50,8 +50,6 @@
     "rollup": "^1.1.2"
   },
   "mnv": {
-    "scriptName": "mnvScope",
-    "slug": "mnv-scope",
     "targets": [
       {
         "type": "node"
