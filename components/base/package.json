@@ -21,10 +21,9 @@
   "license": "AGPL-3.0",
   "private": false,
   "directories": {
-    "public": "public",
     "test": "__tests__"
   },
-  "main": "mnvBase.js",
+  "main": "lib/mnvBase.js",
   "files": [
     "lib"
   ],
