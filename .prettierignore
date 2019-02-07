@@ -11,3 +11,4 @@ dockerfile
 .prettierignore
 .stylelintignore
 **/*.sh
+greenkeeper.json
