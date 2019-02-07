@@ -7,11 +7,6 @@ const { slug, script } = genNames(name)
 
 const { targets, clear, copy: cp } = mnv
 
-const external = {
-  node: Object.keys(dependencies),
-  browser: [],
-}
-
 const prod = !process.env.ROLLUP_WATCH
 
 const conf = targets.map(target => {
@@ -22,8 +17,7 @@ const conf = targets.map(target => {
     clear,
     target.injectCss,
     '/',
-    {},
-    external[target.type]
+    dependencies
   )
   result.plugins.push(prod && copy({ ...cp[target.type] }))
   return result
