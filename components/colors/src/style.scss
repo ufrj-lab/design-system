@@ -1,4 +1,4 @@
-@import '../../tools/main';
+@import '../../_tools/style/main';
 
 :host {
   @include font($family: 'display', $weight: 700, $style: 'normal');
@@ -8,10 +8,10 @@
       align-items: normal !important;
     }
     &.primary {
-      @include colorBg('primary', $hc: text);
+      @include colorBg('primary', $hc: link);
     }
     &.primary-dark {
-      @include colorBg('primary', $color: 'dark', $hc: text);
+      @include colorBg('primary', $color: 'dark', $hc: nav);
     }
     &.primary-light {
       @include colorBg('primary', $color: 'light', $hc: text);
@@ -26,13 +26,13 @@
       @include colorBg('primary', $color: 'black', $hc: text);
     }
     &.util-confirm {
-      @include colorBg('util', $color: 'confirm', $hc: text);
+      @include colorBg('util', $color: 'confirm', $hc: confirm);
     }
     &.util-warning {
-      @include colorBg('util', $color: 'warn', $hc: text);
+      @include colorBg('util', $color: 'warn', $hc: warn);
     }
     &.util-error {
-      @include colorBg('util', $color: 'error', $hc: text);
+      @include colorBg('util', $color: 'error', $hc: error);
     }
     &.dark {
       @include colorBg('text', $color: 'dark', $silent: true, $hc: text);

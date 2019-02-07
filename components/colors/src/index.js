@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element'
+import { LitElement, html } from '@ufrj/mnv-base'
 
 import style from './style.scss'
 

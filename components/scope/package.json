@@ -1,6 +1,6 @@
 {
-  "name": "@ufrj/mnv-example",
-  "version": "0.0.2-alpha.0",
+  "name": "@ufrj/mnv-scope",
+  "version": "0.0.0",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -20,11 +20,11 @@
   },
   "license": "AGPL-3.0",
   "private": false,
-  "main": "lib/mnvElement.js",
   "directories": {
-    "lib": "lib",
+    "public": "assets",
     "test": "__tests__"
   },
+  "main": "mnvScope.js",
   "files": [
     "lib"
   ],
@@ -37,8 +37,8 @@
     "new": "echo \"Error: run new from root\" && exit 1",
     "test": "echo \"Error: run test from root\" && exit 1",
     "watch": "rollup -c -w",
-    "bs": "browser-sync start  -c ./bs-config.js --startPath example/",
-    "watch:global": "lerna run --parallel --stream watch",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath base/",
+    "watch:global": "lerna run  --parallel  build && lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
@@ -51,6 +51,8 @@
     "rollup": "^1.1.2"
   },
   "mnv": {
+    "scriptName": "mnvScope",
+    "slug": "mnv-scope",
     "targets": [
       {
         "type": "node"
@@ -60,9 +62,18 @@
       }
     ],
     "clear": [
+      "tmp",
       "lib",
-      "tmp"
-    ]
+      "../_public/fonts"
+    ],
+    "copy": {
+      "node": {
+        "assets/fonts": "lib/fonts"
+      },
+      "browser": {
+        "assets/fonts": "../_public/fonts"
+      }
+    }
   },
   "publishConfig": {
     "access": "public"

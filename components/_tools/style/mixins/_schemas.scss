@@ -13,10 +13,22 @@
               @if (type-of($hue) == 'map') {
                 $h: map-get($hue, 'hue');
                 $al: map-get($hue, 'al');
-                #{gen-var-color-name($name, 'util')}: #{lighten(
-                    gen-auto-color($h, $variation, $default),
-                    $al
-                  )};
+                $color: gen-auto-color($h, $variation, $default);
+                @if ($al) {
+                  @if ($al > 0) {
+                    #{gen-var-color-name($name, 'util')}: #{lighten(
+                        $color,
+                        $al
+                      )};
+                  } @else {
+                    #{gen-var-color-name($name, 'util')}: #{darken(
+                        $color,
+                        abs($al)
+                      )};
+                  }
+                } @else {
+                  #{gen-var-color-name($name, 'util')}: #{$color};
+                }
               } @else {
                 #{gen-var-color-name($name, 'util')}: #{gen-auto-color(
                     $hue,

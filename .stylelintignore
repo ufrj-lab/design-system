@@ -1,4 +1,4 @@
 components/**/lib
-components/**/public
+components/**/_public
 components/**/tmp
 components/**/externals

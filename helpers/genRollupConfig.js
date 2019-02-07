@@ -5,8 +5,12 @@ import postcss from 'rollup-plugin-postcss'
 import clear from 'rollup-plugin-clear'
 import visualizer from 'rollup-plugin-visualizer'
 import url from 'rollup-plugin-url'
+import replace from 'rollup-plugin-replace'
 
-const cleanPublic = name => [`../public/${name}.js`, `../public/${name}.js.map`]
+const cleanPublic = name => [
+  `../_public/${name}.js`,
+  `../_public/${name}.js.map`,
+]
 
 export const genNames = name => {
   const slug = name.replace('@ufrj/', '')
@@ -22,14 +26,23 @@ export const genNames = name => {
 
 const prod = !process.env.ROLLUP_WATCH
 
-export const genConf = (target, slug, name, clearArr, inject) => ({
+export const genConf = (
+  target,
+  slug,
+  name,
+  clearArr,
+  inject,
+  jail = '/',
+  replaceConf = {},
+  external = ['lit-element']
+) => ({
   input: 'src/index.js',
   output: {
-    file: `${target === 'node' ? 'lib' : '../public'}/${name}.js`,
+    file: `${target === 'node' ? 'lib' : '../_public'}/${name}.js`,
     format: 'esm',
     sourcemap: true,
   },
-  external: target === 'node' ? ['lit-element'] : [],
+  external,
   onwarn(warning) {
     if (warning.code !== 'CIRCULAR_DEPENDENCY') {
       console.error(`(!) ${warning.message}`)
@@ -40,7 +53,10 @@ export const genConf = (target, slug, name, clearArr, inject) => ({
       clear({
         targets: clearArr.concat(cleanPublic(name)),
       }),
-    resolve(),
+    resolve({
+      browser: target === 'browser',
+      jail: target === 'browser' ? jail : '/',
+    }),
     postcss({
       inject: inject ? true : false,
       config: {
@@ -49,10 +65,11 @@ export const genConf = (target, slug, name, clearArr, inject) => ({
       },
     }),
     url({
-      limit: 10 * 1024, // inline files < 10k, copy files > 10k
+      limit: 10 * 1024,
       include: ['**/*.svg', '**/*.woff', '**/*.woff2'],
       emitFiles: true,
     }),
+    Object.keys(replaceConf).length > 0 && replace(replaceConf),
     prod &&
       terser({
         warnings: true,

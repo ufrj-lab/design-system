@@ -24,7 +24,7 @@
   },
   "scripts": {
     "postinstall": "npm run bootstrap && npm run build",
-    "build": "rm -fr ./components/public && lerna run --parallel --stream build",
+    "build": "rm -fr ./components/_public && lerna run --parallel --stream build",
     "deploy": "npm run postinstall",
     "publish": "npm run deploy && lerna publish",
     "bootstrap": "lerna bootstrap --hoist",
@@ -61,6 +61,7 @@
     "rollup-plugin-filesize": "^6.0.1",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-url": "^2.2.0",
     "rollup-plugin-visualizer": "^0.9.2",

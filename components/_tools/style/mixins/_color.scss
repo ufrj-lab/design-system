@@ -20,7 +20,7 @@
   $color-test: null;
 
   @if ($color-test == null) {
-    @debug $type;
+    // @debug $type;
     $color-test: get-color($type);
   }
 
@@ -48,7 +48,7 @@
     } @else {
       --scope-bg-cl: var(#{$prefix}#{$name}#{$color});
     }
-    @debug $color-test;
+    // @debug $color-test;
     --scope-text-cl: var(--cl-text-dark);
   }
   background-color: var(--ac-hc-bg, var(--scope-bg-cl));

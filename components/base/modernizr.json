@@ -1,6 +1,6 @@
 {
   "minify": true,
-  "options": ["setClasses"],
+  "options": [],
   "dest": "./assets/js",
   "feature-detects": [
     "test/svg",

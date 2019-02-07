@@ -43,9 +43,9 @@
   }
 }
 
-@mixin root() {
+@mixin scope($level: host) {
   @include font-faces();
-  :root {
+  :#{$level} {
     @include vars-modular-scale();
     @include vars-vertical-rhythm();
     @include vars-color();
