@@ -1,7 +1,7 @@
 @mixin schema-values($map-hue, $default: true) {
-  @each $colorName, $configs in $map-hue {
+  @each $color-name, $configs in $map-hue {
     @each $hue, $fallbacks in $configs {
-      $prefix: gen-var-color-name($colorName);
+      $prefix: gen-var-color-name($color-name);
       #{$prefix}: #{gen-auto-color($hue)};
       @each $variation, $value in $fallbacks {
         @if ($value == auto) {
