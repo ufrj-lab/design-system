@@ -2,4 +2,12 @@ components/**/lib
 components/**/_public
 components/**/tmp
 components/**/externals
-
+components/**/assets
+package-lock.json
+dockerfile
+.editorconfig
+.eslintignore
+.gitignore
+.prettierignore
+.stylelintignore
+**/*.sh

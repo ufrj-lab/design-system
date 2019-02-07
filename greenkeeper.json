@@ -1,1 +1,13 @@
-{"groups":{"default":{"packages":["components/base/package.json","components/colors/package.json","components/example/package.json","package.json"]}}}
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "components/base/package.json",
+        "components/colors/package.json",
+        "components/example/package.json",
+        "components/scope/package.json",
+        "package.json"
+      ]
+    }
+  }
+}

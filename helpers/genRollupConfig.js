@@ -12,6 +12,8 @@ const cleanPublic = name => [
   `../_public/${name}.js.map`,
 ]
 
+const toCapitalizer = str => `${str[0].toUpperCase()}${str.slice(1)}`
+
 export const genNames = name => {
   const slug = name.replace('@ufrj/', '')
 
@@ -19,7 +21,7 @@ export const genNames = name => {
     slug,
     script: slug
       .split('-')
-      .map((val, i) => (i < 1 ? val : `${val[0].toUpperCase()}${val.slice(1)}`))
+      .map((val, i) => (i < 1 ? val : toCapitalizer(val)))
       .join(''),
   }
 }
@@ -47,9 +49,7 @@ const noBundles = dependencies => {
       const newName = `${name
         .replace('@ufrj/', './')
         .split('-')
-        .map((val, i) =>
-          i > 0 ? `${val[0].toUpperCase()}${val.slice(1)}` : val
-        )
+        .map((val, i) => (i > 0 ? toCapitalizer(val) : val))
         .join('')}.js`
       replace['browser'][name] = newName
       external['browser'].push(newName)

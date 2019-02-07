@@ -21,7 +21,6 @@
   "private": true,
   "main": "lib/mnvColors.js",
   "directories": {
-    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
@@ -41,7 +40,7 @@
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
-    "@ufrj/mnv-base": "^0.0.0"
+    "@ufrj/mnv-base": "^0.0.1-alpha.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",

@@ -252,3 +252,5 @@ components/**/_public
 #ignore workbox
 components/**/workbox-*
 
+#ignore package-lock.json in components
+components/**/package-lock.json

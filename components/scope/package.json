@@ -21,10 +21,9 @@
   "license": "AGPL-3.0",
   "private": false,
   "directories": {
-    "public": "assets",
     "test": "__tests__"
   },
-  "main": "mnvScope.js",
+  "main": "lib/mnvScope.js",
   "files": [
     "lib"
   ],
@@ -37,7 +36,7 @@
     "new": "echo \"Error: run new from root\" && exit 1",
     "test": "echo \"Error: run test from root\" && exit 1",
     "watch": "rollup -c -w",
-    "bs": "browser-sync start  -c ./bs-config.js --startPath base/",
+    "bs": "browser-sync start  -c ./bs-config.js --startPath scope/",
     "watch:global": "lerna run  --parallel  build && lerna run --parallel --stream watch",
     "dev": "npm-run-all -p watch:global bs"
   },
