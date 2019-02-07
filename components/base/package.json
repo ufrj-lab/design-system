@@ -32,7 +32,7 @@
     "not dead"
   ],
   "scripts": {
-    "build": "rm -fr assets/js && workbox copyLibraries assets/js && modernizr -c modernizr.json && rollup -c",
+    "build": "rm -fr assets/js && workbox copyLibraries assets/js && rm assets/js/workbox-v3.6.3/*.dev.js* && modernizr -c modernizr.json && rollup -c",
     "new": "echo \"Error: run new from root\" && exit 1",
     "test": "echo \"Error: run test from root\" && exit 1",
     "modernizr": "modernizr -c modernizr.json",
