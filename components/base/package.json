@@ -54,8 +54,6 @@
     "workbox-cli": "^3.6.3"
   },
   "mnv": {
-    "scriptName": "mnvBase",
-    "slug": "mnv-base",
     "targets": [
       {
         "type": "node"

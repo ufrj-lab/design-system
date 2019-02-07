@@ -4,24 +4,29 @@
   "cSpell.words": [
     "AGPL",
     "Affero",
+    "Brotli",
     "Carvalho",
     "Luiz",
     "Sublicensing",
     "Vinícius",
     "WIPO",
+    "filesize",
     "genpushs",
     "lerna",
     "luizsantos",
     "markdownlint",
+    "onwarn",
     "polyfill",
     "postcss",
     "reitoria",
     "shadycss",
+    "sourcemap",
     "stylelint",
     "ufrj",
     "viniciuscarvalho",
     "webcomponents",
-    "webcomponentsjs"
+    "webcomponentsjs",
+    "woff"
   ],
   "tslint.enable": false
 }
