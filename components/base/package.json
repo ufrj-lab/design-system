@@ -1,6 +1,6 @@
 {
   "name": "@ufrj/mnv-base",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -43,8 +43,8 @@
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
-    "lit-element": "^2.0.1",
-    "@webcomponents/webcomponentsjs": "^2.2.7"
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
