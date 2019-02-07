@@ -34,14 +34,14 @@ alternate versions of the program, if they receive widespread use, become
 available for other developers to incorporate. Many developers of free software
 are heartened and encouraged by the resulting cooperation. However, in the case
 of software used on network servers, this result may fail to come about. The GNU
-General Public License permits making a modified version and letting the _public
-access it on a server without ever releasing its source code to the _public.
+General Public License permits making a modified version and letting the public
+access it on a server without ever releasing its source code to the public.
 
 The GNU Affero General Public License is designed specifically to ensure that,
 in such cases, the modified source code becomes available to the community. It
 requires the operator of a network server to provide the source code of the
-modified version running there to the users of that server. Therefore, _public
-use of a modified version, on a _publicly accessible server, gives the _public
+modified version running there to the users of that server. Therefore, public
+use of a modified version, on a publicly accessible server, gives the public
 access to the source code of the modified version.
 
 An older license, called the Affero General Public License and published by
@@ -77,7 +77,7 @@ To "propagate" a work means to do anything with it that, without permission,
 would make you directly or secondarily liable for infringement under applicable
 copyright law, except executing it on a computer or modifying a private copy.
 Propagation includes copying, distribution (with or without modification),
-making available to the _public, and in some countries other activities as well.
+making available to the public, and in some countries other activities as well.
 
 To "convey" a work means any kind of propagation that enables other parties to
 make or receive copies. Mere interaction with a user through a computer network,
@@ -105,7 +105,7 @@ The "System Libraries" of an executable work include anything, other than the
 work as a whole, that (a) is included in the normal form of packaging a Major
 Component, but which is not part of that Major Component, and (b) serves only to
 enable use of the work with that Major Component, or to implement a Standard
-Interface for which an implementation is available to the _public in source code
+Interface for which an implementation is available to the public in source code
 form. A "Major Component", in this context, means a major essential component
 (kernel, window system, and so on) of the specific operating system (if any) on
 which the executable work runs, or a compiler used to produce the work, or an
@@ -241,7 +241,7 @@ under the terms of this License, in one of these ways:
   that it is available for as long as needed to satisfy these requirements.
 - e) Convey the object code using peer-to-peer transmission, provided you inform
   other peers where the object code and Corresponding Source of the work are
-  being offered to the general _public at no charge under subsection 6d.
+  being offered to the general public at no charge under subsection 6d.
 
 A separable portion of the object code, whose source code is excluded from the
 Corresponding Source as a System Library, need not be included in conveying the
@@ -285,8 +285,8 @@ operation of the network or violates the rules and protocols for communication
 across the network.
 
 Corresponding Source conveyed, and Installation Information provided, in accord
-with this section must be in a format that is _publicly documented (and with an
-implementation available to the _public in source code form), and must require no
+with this section must be in a format that is publicly documented (and with an
+implementation available to the public in source code form), and must require no
 special password or key for unpacking, reading or copying.
 
 #### 7. Additional Terms.
@@ -318,7 +318,7 @@ supplement the terms of this License with terms:
 - c) Prohibiting misrepresentation of the origin of that material, or requiring
   that modified versions of such material be marked in reasonable ways as
   different from the original version; or
-- d) Limiting the use for _publicity purposes of names of licensors or authors of
+- d) Limiting the use for publicity purposes of names of licensors or authors of
   the material; or
 - e) Declining to grant rights under trademark law for use of some trade names,
   trademarks, or service marks; or
@@ -430,7 +430,7 @@ commitment not to enforce a patent against the party.
 
 If you convey a covered work, knowingly relying on a patent license, and the
 Corresponding Source of the work is not available for anyone to copy, free of
-charge and under the terms of this License, through a _publicly available network
+charge and under the terms of this License, through a publicly available network
 server or other readily accessible means, then you must either (1) cause the
 Corresponding Source to be so available, or (2) arrange to deprive yourself of
 the benefit of the patent license for this particular work, or (3) arrange, in a
@@ -513,7 +513,7 @@ of the GNU Affero General Public License, you may choose any version ever
 published by the Free Software Foundation.
 
 If the Program specifies that a proxy can decide which future versions of the
-GNU Affero General Public License can be used, that proxy's _public statement of
+GNU Affero General Public License can be used, that proxy's public statement of
 acceptance of a version permanently authorizes you to choose that version for
 the Program.
 
@@ -555,7 +555,7 @@ END OF TERMS AND CONDITIONS
 ### How to Apply These Terms to Your New Programs
 
 If you develop a new program, and you want it to be of the greatest possible use
-to the _public, the best way to achieve this is to make it free software which
+to the public, the best way to achieve this is to make it free software which
 everyone can redistribute and change under these terms.
 
 To do so, attach the following notices to the program. It is safest to attach
