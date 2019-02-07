@@ -1,0 +1,10 @@
+@function get-color($variation: '') {
+  $hue: nth(nth(map-get(map-get($schemas, 'ufrj'), 'primary'), 1), 1);
+  $map: nth(nth(map-get(map-get($schemas, 'ufrj'), 'primary'), 1), 2);
+  @if ($variation == 'primary') {
+    @return $map;
+  } @else if ($variation != 'text') {
+    @return map-get($map, $variation);
+  }
+  @return false;
+}

@@ -6,7 +6,7 @@ const { resolve } = require('path')
 greenKeeper.groups.default.packages = readdirSync(
   resolve(__dirname, '../components')
 )
-  .filter(item => item !== 'public' && item !== 'tools')
+  .filter(item => item !== '_public' && item !== '_tools')
   .map(item => `components/${item}/package.json`)
   .concat(['package.json'])
 

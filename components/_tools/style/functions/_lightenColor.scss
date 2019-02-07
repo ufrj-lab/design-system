@@ -1,0 +1,7 @@
+@function lighten-color($c, $amount: 10%) {
+  $color: lighten($c, $amount);
+  @while (colour-difference($dark, $color) == 'false') {
+    $color: lighten($color, 1%);
+  }
+  @return $color;
+}

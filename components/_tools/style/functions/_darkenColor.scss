@@ -1,0 +1,7 @@
+@function darken-color($c, $amount: 10%) {
+  $color: darken($c, $amount);
+  @while (colour-difference($color, $light) == 'false') {
+    $color: darken($color, 1%);
+  }
+  @return $color;
+}

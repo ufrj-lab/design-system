@@ -1,0 +1,73 @@
+@mixin schema-values($map-hue, $default: true) {
+  @each $colorName, $configs in $map-hue {
+    @each $hue, $fallbacks in $configs {
+      $prefix: gen-var-color-name($colorName);
+      #{$prefix}: #{gen-auto-color($hue)};
+      @each $variation, $value in $fallbacks {
+        @if ($value == auto) {
+          @if ($variation == util) {
+            $type: get-type-schema-colors($default);
+            $util: map-get(map-get($colors-auto-variations, $type), $variation);
+            $map-util-colors: map-get($util, 'hue');
+            @each $name, $hue in $map-util-colors {
+              @if (type-of($hue) == 'map') {
+                $h: map-get($hue, 'hue');
+                $al: map-get($hue, 'al');
+                $color: gen-auto-color($h, $variation, $default);
+                @if ($al) {
+                  @if ($al > 0) {
+                    #{gen-var-color-name($name, 'util')}: #{lighten(
+                        $color,
+                        $al
+                      )};
+                  } @else {
+                    #{gen-var-color-name($name, 'util')}: #{darken(
+                        $color,
+                        abs($al)
+                      )};
+                  }
+                } @else {
+                  #{gen-var-color-name($name, 'util')}: #{$color};
+                }
+              } @else {
+                #{gen-var-color-name($name, 'util')}: #{gen-auto-color(
+                    $hue,
+                    $variation,
+                    $default
+                  )};
+              }
+            }
+          } @else if($variation == text) {
+          } @else {
+            #{$prefix}-#{$variation}: #{gen-auto-color(
+                $hue,
+                $variation,
+                $default
+              )};
+          }
+        } @else {
+          @if ($variation == util) {
+            @debug $variation, $value;
+          } @else if($variation == text) {
+            @debug $variation, $value;
+          } @else {
+            $s: map-get($value, 's');
+            $l: map-get($value, 'l');
+            $ah: map-get($value, 'ah');
+            #{$prefix}-#{$variation}: #{adjust-hue(hsl($hue, $s, $l), $ah)};
+          }
+        }
+      }
+    }
+  }
+}
+@mixin schemas() {
+  @each $name, $map-hue in $schemas {
+    .mnv-schema-#{$name} {
+      @include schema-values($map-hue);
+      &.--alt-cl {
+        @include schema-values($map-hue, false);
+      }
+    }
+  }
+}

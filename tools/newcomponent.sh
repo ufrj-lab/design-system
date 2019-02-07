@@ -70,7 +70,7 @@ function createComponent {
 	_new_src_dir="$_new_dir/src"
 
 	_tmp_new_dir="$_new_dir/tmp"
-	_public_new_dir="$_new_dir/public"
+	_public_new_dir="$_new_dir/_public"
 	_node_new_dir="$_new_dir/node_modules"
 	_lib_new_dir="$_new_dir/lib"
 

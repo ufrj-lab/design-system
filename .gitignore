@@ -247,7 +247,7 @@ components/**/lib
 components/**/tmp
 
 # ignore public
-components/**/public
+components/**/_public
 
 #ignore workbox
 components/**/workbox-*

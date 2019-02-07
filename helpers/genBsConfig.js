@@ -14,10 +14,10 @@ const ignoreComponents = [
 
 const genIgnoreComponents = (ignore, server) => {
   const components = readdirSync(server).filter(
-    item => item !== 'public' && item !== 'tools'
+    item => item !== '_public' && item !== '_tools'
   )
 
-  const result = [`${server}/public/*.(map|woff|woff2)`]
+  const result = [`${server}/_public/*.(map|woff|woff2)`]
 
   components.forEach(comp => {
     ignore.forEach(file => {

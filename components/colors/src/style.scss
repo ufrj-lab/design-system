@@ -1,44 +1,50 @@
-@import '../../tools/main';
+@import '../../_tools/style/main';
 
 :host {
-  @include font();
+  @include font($family: 'display', $weight: 700, $style: 'normal');
   .color {
     &.colors {
       flex-direction: column;
       align-items: normal !important;
     }
     &.primary {
-      background-color: var(--sch-cl-primary);
+      @include colorBg('primary', $hc: link);
     }
     &.primary-dark {
-      background-color: var(--sch-cl-primary-dark);
+      @include colorBg('primary', $color: 'dark', $hc: nav);
     }
     &.primary-light {
-      background-color: var(--sch-cl-primary-light);
+      @include colorBg('primary', $color: 'light', $hc: text);
+    }
+    &.primary-white {
+      @include colorBg('primary', $color: 'white', $hc: text);
+    }
+    &.primary-gray {
+      @include colorBg('primary', $color: 'gray', $hc: text);
+    }
+    &.primary-black {
+      @include colorBg('primary', $color: 'black', $hc: text);
     }
     &.util-confirm {
-      background-color: var(--sch-cl-util-confirm);
+      @include colorBg('util', $color: 'confirm', $hc: confirm);
     }
     &.util-warning {
-      background-color: var(--sch-cl-util-warn);
+      @include colorBg('util', $color: 'warn', $hc: warn);
     }
     &.util-error {
-      background-color: var(--sch-cl-util-error);
+      @include colorBg('util', $color: 'error', $hc: error);
     }
     &.dark {
-      background-color: var(--cl-dark);
-    }
-    &.dark-80 {
-      background-color: var(--cl-dark-80);
+      @include colorBg('text', $color: 'dark', $silent: true, $hc: text);
     }
     &.dark-70 {
-      background-color: var(--cl-dark-70);
+      @include colorBg('text', $color: 'dark-70', $silent: true, $hc: text);
     }
     &.light {
-      background-color: var(--cl-light);
+      @include colorBg('text', $color: 'light', $silent: true, $hc: text);
     }
-    &.light-90 {
-      background-color: var(--cl-light-90);
+    &.light-70 {
+      @include colorBg('text', $color: 'light-70', $silent: true, $hc: text);
     }
   }
 
@@ -46,7 +52,7 @@
     display: flex;
     flex-wrap: wrap;
     > .color {
-      height: 33.33vh;
+      height: 25vh;
       min-width: 100px;
       flex: 1;
       display: flex;

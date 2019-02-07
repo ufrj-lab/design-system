@@ -1,5 +1,6 @@
 {
   "name": "@ufrj/mnv-base",
+  "version": "0.0.0",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -18,7 +19,7 @@
     "url": "https://github.com/ufrj-lab/mnv.git"
   },
   "license": "AGPL-3.0",
-  "private": true,
+  "private": false,
   "directories": {
     "public": "public",
     "test": "__tests__"
@@ -58,24 +59,30 @@
     "slug": "mnv-base",
     "targets": [
       {
-        "type": "node",
-        "injectCss": true
+        "type": "node"
       },
       {
-        "type": "browser",
-        "injectCss": true
+        "type": "browser"
       }
     ],
     "clear": [
       "tmp",
-      "../public/fonts",
-      "../public/workbox-v3.6.3",
-      "../public/polyfills"
+      "lib",
+      "../_public/workbox-v3.6.3",
+      "../_public/polyfills"
     ],
     "copy": {
-      "assets/fonts": "../public/fonts",
-      "assets/js/workbox-v3.6.3": "../public/workbox-v3.6.3",
-      "../../node_modules/@webcomponents/webcomponentsjs/bundles": "../public/polyfills/bundles"
+      "browser": {
+        "assets/js/workbox-v3.6.3": "../_public/workbox-v3.6.3",
+        "../../node_modules/@webcomponents/webcomponentsjs/bundles": "../_public/polyfills/bundles"
+      },
+      "node": {
+        "assets/js/workbox-v3.6.3": "lib/workbox-v3.6.3",
+        "../../node_modules/@webcomponents/webcomponentsjs/bundles": "lib/polyfills/bundles"
+      }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
