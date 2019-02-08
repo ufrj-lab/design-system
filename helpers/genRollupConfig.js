@@ -90,7 +90,7 @@ export const genConf = (pkgName, mnv, dependencies, jail = '/') => {
         prod && cp && copy(cp[target]),
         resolve({
           browser: target === 'browser',
-          jail: target === 'browser' ? jail : '/',
+          jail: prod && target === 'browser' ? jail : '/',
         }),
         postcss({
           inject: inject ? true : false,
@@ -104,7 +104,8 @@ export const genConf = (pkgName, mnv, dependencies, jail = '/') => {
           include: ['**/*.svg', '**/*.woff', '**/*.woff2'],
           emitFiles: true,
         }),
-        Object.keys(replaceConf[target]).length > 0 &&
+        prod &&
+          Object.keys(replaceConf[target]).length > 0 &&
           replace(replaceConf[target]),
         prod &&
           terser({
