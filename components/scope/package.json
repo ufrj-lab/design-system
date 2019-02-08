@@ -64,9 +64,6 @@
       "../_public/fonts"
     ],
     "copy": {
-      "node": {
-        "assets/fonts": "lib/fonts"
-      },
       "browser": {
         "assets/fonts": "../_public/fonts"
       }
