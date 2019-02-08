@@ -26,7 +26,7 @@
   }
 }
 
-@mixin auto-colors($hue, $default, $variation) {
+@mixin auto-colors($hue, $default, $variation, $prefix) {
   @if ($variation == util) {
     @include util-colors($default, $variation);
   } @else if($variation == text) {
@@ -36,7 +36,7 @@
   }
 }
 
-@mixin manual-colors($value, $variation) {
+@mixin manual-colors($value, $variation, $prefix) {
   @if ($variation == util) {
     @debug $variation, $value;
   } @else if($variation == text) {
@@ -56,9 +56,9 @@
       #{$prefix}: #{gen-auto-color($hue)};
       @each $variation, $value in $fallbacks {
         @if ($value == auto) {
-          @include auto-colors($hue, $default, $variation);
+          @include auto-colors($hue, $default, $variation, $prefix);
         } @else {
-          @include manual-colors($value, $variation);
+          @include manual-colors($value, $variation, $prefix);
         }
       }
     }
