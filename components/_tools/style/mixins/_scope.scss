@@ -43,22 +43,18 @@
   }
 }
 
-@mixin scope() {
-  :host {
-    @include vars-modular-scale();
-    @include vars-vertical-rhythm();
-    @include vars-color();
-    @include schemas();
-    font-size: var(--ms-0);
-    .mnv {
-      margin: 0;
+@mixin scope($hosted: 'root') {
+  @if ($hosted == 'root' or $hosted == 'host') {
+    :#{$hosted} {
+      @include vars-modular-scale();
+      @include vars-vertical-rhythm();
+      @include vars-color();
+      @include schemas();
+      font-size: var(--ms-0);
+      @include hight-contrast();
+      @include font($init: true);
     }
-
-    .mnv-ac-font {
-      --ac-font: Arial;
-    }
-
-    @include hight-contrast();
-    @include font($init: true);
+  } @else {
+    @error 'O "#{$hosted}" escopo não existe!';
   }
 }

@@ -1,39 +1,39 @@
-import { LitElement, html } from '@ufrj/mnv-base'
+import { LitElement, html, uCss } from '@ufrj/mnv-base'
 
-import scope from './scope.scss'
+import rootScope from './root.scss'
+import host from './host.scss'
 import fontFaces from './font-faces.scss'
 
 export class MnvScope extends LitElement {
+  static get styles() {
+    return uCss(host)
+  }
   static get properties() {
     return {
       schema: String,
       root: Boolean,
     }
   }
+
   constructor() {
     super()
     this.schema = 'default'
-    this.root = false
+    this.root = true
   }
-  init(render = false) {
+  init() {
     window.mnv = window.mnv || {}
 
     const { fontFaces: haveFontFaces, root: haveRoot } = window.mnv
 
     let content = ''
 
-    let empty = false
-
     if (!haveFontFaces) {
       content += fontFaces
       window.mnv.fontFaces = true
     }
 
-    if ((this.root || !render) && !haveRoot) {
-      content += scope
-
-      empty = true
-
+    if (this.root && !haveRoot) {
+      content += rootScope
       window.mnv.root = true
     }
 
@@ -44,19 +44,10 @@ export class MnvScope extends LitElement {
       style.appendChild(text)
       head.appendChild(style)
     }
-
-    if (empty) return ''
-
-    return html`
-      <style>
-        ${scope}
-      </style>
-    `
   }
 
   render() {
     return html`
-      ${this.init(true)}
       <slot></slot>
     `
   }
