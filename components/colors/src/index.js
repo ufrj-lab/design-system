@@ -1,5 +1,9 @@
 import { LitElement, html } from '@ufrj/mnv-base'
 
+import { MnvScope } from '@ufrj/mnv-scope'
+
+new MnvScope().init()
+
 import style from './style.scss'
 
 export class MnvColors extends LitElement {
@@ -8,6 +12,7 @@ export class MnvColors extends LitElement {
       <style>
         ${style}
       </style>
+
       <div class="colors">
         <div class="color primary-dark">Primary Dark</div>
         <div class="color primary">Primary</div>

@@ -44,7 +44,6 @@
 }
 
 @mixin scope() {
-  @include font-faces();
   :host {
     @include vars-modular-scale();
     @include vars-vertical-rhythm();
