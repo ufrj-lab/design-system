@@ -4,18 +4,21 @@
   }
   @error 'A familia "#{$family}" não existe!';
 }
+
 @function verify-variation($font-family) {
   @if (map-has-key($font-family, 'variations')) {
     @return map-get($font-family, 'variations');
   }
   @error 'Variações da familia "#{$family}" não foram configuradas!';
 }
+
 @function verify-style($variations, $style) {
   @if (map-has-key($variations, $style)) {
     @return map-get($variations, $style);
   }
   @error 'Não existe esse estilo para a familia "#{$family}"!';
 }
+
 @function verify-weight($font-family, $list-weights) {
   @each $val, $c in $list-weights {
     @if ($val == $weight) {
@@ -24,6 +27,7 @@
   }
   @error 'Não existe esse peso para a familia "#{$family}"!';
 }
+
 @function get-font($family: as, $style: normal, $weight: 400) {
   $font-family: verify-family($family, $fonts);
   $variations: verify-variation($font-family);
