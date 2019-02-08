@@ -1,6 +1,6 @@
 {
   "name": "@ufrj/mnv-example",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.5-alpha.0",
   "description": "",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [
@@ -41,7 +41,7 @@
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
-    "@ufrj/mnv-base": "^0.0.2-alpha.0"
+    "@ufrj/mnv-base": "^0.0.3-alpha.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
