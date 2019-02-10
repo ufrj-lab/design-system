@@ -4,22 +4,7 @@ import rootScope from './root.scss'
 import host from './host.scss'
 import fontFaces from './font-faces.scss'
 
-export class MnvScope extends LitElement {
-  static get styles() {
-    return uCss(host)
-  }
-  static get properties() {
-    return {
-      schema: String,
-      root: Boolean,
-    }
-  }
-
-  constructor() {
-    super()
-    this.schema = 'default'
-    this.root = true
-  }
+class MnvScope extends LitElement {
   init() {
     window.mnv = window.mnv || {}
 
@@ -35,6 +20,19 @@ export class MnvScope extends LitElement {
     if (this.root && !haveRoot) {
       content += rootScope
       window.mnv.root = true
+      const bodyCL = document.querySelector('body').classList
+
+      bodyCL.add('mnv')
+      bodyCL.add(`mnv-schema-${this.schema}`)
+
+      if (this['alt-cl']) bodyCL.add('mnv-alt-cl')
+      else bodyCL.remove('mnv-alt-cl')
+
+      if (this['ac-font']) bodyCL.add('mnv-ac-font')
+      else bodyCL.remove('mnv-ac-font')
+
+      if (this['ac-hc']) bodyCL.add('mnv-ac-hc')
+      else bodyCL.remove('mnv-ac-hc')
     }
 
     if (content !== '') {
@@ -45,8 +43,30 @@ export class MnvScope extends LitElement {
       head.appendChild(style)
     }
   }
+  static get properties() {
+    return {
+      schema: String,
+      'alt-cl': Boolean,
+      'ac-font': Boolean,
+      'ac-hc': Boolean,
+      root: Boolean,
+    }
+  }
+  constructor() {
+    super()
+    this.schema = 'ufrj'
+    this['alt-cl'] = false
+    this['ac-font'] = false
+    this['ac-hc'] = false
+    this.root = false
+  }
+
+  static get styles() {
+    return uCss(host)
+  }
 
   render() {
+    this.init()
     return html`
       <slot></slot>
     `
@@ -54,5 +74,3 @@ export class MnvScope extends LitElement {
 }
 
 customElements.define('mnv-scope', MnvScope)
-
-export default MnvScope

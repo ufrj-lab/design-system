@@ -1,5 +1,13 @@
-@mixin hight-contrast() {
+@mixin hight-contrast-root() {
   .mnv-ac-hc {
+    @each $name, $color in $hight-contrast {
+      --ac-hc-#{$name}: #{$color};
+    }
+  }
+}
+
+@mixin hight-contrast-host() {
+  :host([ac-hc]) {
     @each $name, $color in $hight-contrast {
       --ac-hc-#{$name}: #{$color};
     }

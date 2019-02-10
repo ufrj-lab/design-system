@@ -1,12 +1,10 @@
-import { html, uCss } from '@ufrj/mnv-base'
-
-import { MnvScope } from '@ufrj/mnv-scope'
+import { html, uCss, LitElement } from '@ufrj/mnv-base'
 
 import style from './style.scss'
 
-export class MnvExample extends MnvScope {
+export class MnvExample extends LitElement {
   static get styles() {
-    return [super.styles, uCss(style)]
+    return uCss(style)
   }
   render() {
     return html`

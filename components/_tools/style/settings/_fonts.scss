@@ -189,4 +189,59 @@ $fonts: (
       ),
     ),
   ),
+  ac: (
+    type: sans-serif,
+    family: 'Open Dyslexic',
+    variations: (
+      normal: (
+        400: (
+          url: (
+            path: $path-fonts + 'open-dyslexic-v3-regular',
+            types: (
+              'woff2',
+              'woff',
+            ),
+          ),
+        ),
+        500: (
+          url: (
+            path: $path-fonts + 'open-dyslexic-v3-bold',
+            types: (
+              'woff2',
+              'woff',
+            ),
+          ),
+        ),
+        700: (
+          url: (
+            path: $path-fonts + 'open-dyslexic-v3-bold',
+            types: (
+              'woff2',
+              'woff',
+            ),
+          ),
+        ),
+      ),
+      italic: (
+        400: (
+          url: (
+            path: $path-fonts + 'open-dyslexic-v3-regular',
+            types: (
+              'woff2',
+              'woff',
+            ),
+          ),
+        ),
+        700: (
+          url: (
+            path: $path-fonts + 'open-dyslexic-v3-bold',
+            types: (
+              'woff2',
+              'woff',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
 );
