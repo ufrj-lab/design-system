@@ -1,4 +1,4 @@
-import { LitElement, html, uCss } from '@ufrj/mnv-base'
+import { LitElement, html } from '@ufrj/mnv-base'
 
 import rootScope from './root.scss'
 import host from './host.scss'
@@ -8,6 +8,15 @@ const setClass = (key, val, target) => {
   val ? target.add(`mnv-${key}`) : target.remove(`mnv-${key}`)
 }
 
+const setConfiguration = (name, value, target) => {
+  if (name !== 'schema') {
+    const isTrue = value === 'true' || value === true
+    setClass(name, isTrue, target)
+  } else {
+    target.add(`mnv-schema-${value}`)
+  }
+}
+
 const getMetaConfigurations = (origin, target) => {
   origin.querySelectorAll('meta[property^="mnv:"]').forEach(element => {
     const name = element
@@ -15,19 +24,28 @@ const getMetaConfigurations = (origin, target) => {
       .split(':')
       .slice(-1)
       .pop()
-    let value = element.getAttribute('content')
-    if (name !== 'schema') {
-      setClass(name, value === 'true', target)
-    } else {
-      target.add(`mnv-schema-${value}`)
-    }
+    const value = element.getAttribute('content')
+    setConfiguration(name, value, target)
   })
 }
 
-const configureBody = head => {
+const getObjConfigurations = (conf, target) => {
+  Object.keys(conf).forEach(key => {
+    const name = key
+    const value = conf[key]
+    if (name !== 'inject') setConfiguration(name, value, target)
+  })
+}
+
+const getConfigurations = (origin, target, conf) => {
+  if (!conf) getMetaConfigurations(origin, target)
+  else getObjConfigurations(conf, target)
+}
+
+const configureBody = (head, conf) => {
   const bodyCL = document.querySelector('body').classList
   bodyCL.add('mnv')
-  getMetaConfigurations(head, bodyCL)
+  getConfigurations(head, bodyCL, conf)
 }
 
 const appendStyle = (target, content) => {
@@ -38,7 +56,15 @@ const appendStyle = (target, content) => {
     target.appendChild(style)
   }
 }
-export const initRootScope = root => {
+export const initRootScope = (inject, conf = false) => {
+  const length = document.querySelectorAll('mnv-scope').length
+
+  const testRun = conf !== false || length === 0
+
+  const testInject = inject === 'true' || inject === true
+
+  const rootInject = length > 1 ? true : testRun && testInject
+
   window.mnv = window.mnv || {}
 
   const { fontFaces: haveFontFaces, root: haveRoot } = window.mnv
@@ -52,55 +78,71 @@ export const initRootScope = root => {
 
   const head = document.querySelector('head')
 
-  if (!haveRoot && root) {
+  if (!haveRoot && rootInject) {
     content += rootScope
     window.mnv.root = true
 
-    configureBody(head)
+    configureBody(head, conf)
   }
 
   appendStyle(head, content)
+
+  return !window.mnv.root
 }
 
 class MnvScope extends LitElement {
+  getMetaAttribute(key) {
+    const meta = document.querySelector(`meta[property="mnv:${key}"]`)
+    const content = meta ? meta.getAttribute('content') : false
+    return content === 'true' ? true : content
+  }
+
   init() {
+    const conf = {}
     Object.keys(this)
       .filter(val => val.slice(0, 2) === '__')
       .forEach(key => {
         const attrib = this[key]
         const name = key.replace('__', '')
-        if (attrib) this.setAttribute(name, attrib)
+        if (attrib) {
+          this.setAttribute(name, attrib)
+          conf[name] = attrib
+        }
       })
 
-    if (this.root) initRootScope()
+    return initRootScope(this.inject, conf)
   }
+
   static get properties() {
     return {
       schema: String,
       'alt-cl': Boolean,
       'ac-font': Boolean,
       'ac-hc': Boolean,
-      root: Boolean,
+      inject: Boolean,
     }
   }
+
   constructor() {
     super()
-    this.schema = 'ufrj'
-    this['alt-cl'] = false
-    this['ac-font'] = false
-    this['ac-hc'] = false
-    this.root = false
-  }
+    const { getMetaAttribute } = this
 
-  static get styles() {
-    return uCss(host)
+    const attribute = ['schema', 'alt-cl', 'ac-font', 'ac-hc', 'inject']
+
+    attribute.forEach(key => {
+      this[key] = getMetaAttribute(key)
+    })
   }
 
   render() {
-    this.init()
-    return html`
-      <slot></slot>
-    `
+    return this.init()
+      ? html`
+          <style>
+            ${host}
+          </style>
+          <slot></slot>
+        `
+      : ''
   }
 }
 

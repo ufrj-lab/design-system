@@ -116,6 +116,18 @@ $colors-auto-variations: (
 );
 
 $schemas: (
+  default: (
+    primary: (
+      150: (
+        dark: auto,
+        light: auto,
+        white: auto,
+        gray: auto,
+        black: auto,
+        util: auto,
+      ),
+    ),
+  ),
   ufrj: (
     primary: (
       220: (

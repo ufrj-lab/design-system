@@ -7,18 +7,18 @@ import style from './style.scss'
 export class MnvExample extends LitElement {
   constructor() {
     super()
-    this.root = true
+    this.inject = true
   }
   static get properties() {
     return {
-      root: Boolean,
+      inject: Boolean,
     }
   }
   static get styles() {
     return uCss(style)
   }
   render() {
-    initRootScope(this.root)
+    initRootScope(this.inject)
     return html`
       <slot></slot>
     `

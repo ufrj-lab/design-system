@@ -67,21 +67,34 @@
 
 @mixin schemas-host() {
   @each $name, $map-hue in $schemas {
-    :host([schema='#{$name}']) {
-      @include schema-values($map-hue);
-    }
-    :host([schema='#{$name}'][alt-cl]) {
-      @include schema-values($map-hue, false);
+    @if ($name == 'default') {
+      :host([alt-cl]) {
+        @include schema-values($map-hue, false);
+      }
+    } @else {
+      :host([schema='#{$name}']) {
+        @include schema-values($map-hue);
+      }
+      :host([schema='#{$name}'][alt-cl]) {
+        @include schema-values($map-hue, false);
+      }
     }
   }
 }
 @mixin schemas-root() {
   @each $name, $map-hue in $schemas {
-    &.mnv-schema-#{$name} {
+    @if ($name == 'default') {
       @include schema-values($map-hue);
-
       &.mnv-alt-cl {
         @include schema-values($map-hue, false);
+      }
+    } @else {
+      &.mnv-schema-#{$name} {
+        @include schema-values($map-hue);
+
+        &.mnv-alt-cl {
+          @include schema-values($map-hue, false);
+        }
       }
     }
   }

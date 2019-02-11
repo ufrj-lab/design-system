@@ -48,7 +48,8 @@
     @error 'O "#{$hosted}" escopo não existe!';
   }
   @if ($hosted == 'root') {
-    :#{$hosted} .mnv {
+    :root .mnv {
+      margin: 0;
       @include vars-modular-scale();
       @include vars-vertical-rhythm();
       @include vars-color();
@@ -62,12 +63,14 @@
       @include hight-contrast-root();
     }
   } @else {
-    :#{$hosted} {
+    :host {
       @include vars-modular-scale();
       @include vars-vertical-rhythm();
       @include vars-color();
       font-size: var(--ms-0);
       @include font($init: true);
+      @debug map-get($schemas, 'default');
+      @include schema-values(map-get($schemas, 'default'));
     }
     :host([ac-font]) {
       --ac-font: 'Open Dyslexic';
