@@ -77,7 +77,7 @@
 }
 @mixin schemas-root() {
   @each $name, $map-hue in $schemas {
-    .mnv-schema-#{$name} {
+    &.mnv-schema-#{$name} {
       @include schema-values($map-hue);
 
       &.mnv-alt-cl {
