@@ -41,7 +41,8 @@
     "dev": "npm-run-all -p watch:global bs"
   },
   "dependencies": {
-    "@ufrj/mnv-base": "^0.0.3-alpha.0"
+    "@ufrj/mnv-base": "^0.0.3-alpha.0",
+    "@ufrj/mnv-scope": "^0.0.3-alpha.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",

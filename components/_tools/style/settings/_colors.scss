@@ -57,7 +57,10 @@ $colors-auto-variations: (
           hue: 51,
           al: 8%,
         ),
-        error: 345,
+        error: (
+          hue: 345,
+          al: -3.2%,
+        ),
       ),
       s: 100%,
       l: 36%,
@@ -113,9 +116,21 @@ $colors-auto-variations: (
 );
 
 $schemas: (
+  default: (
+    primary: (
+      150: (
+        dark: auto,
+        light: auto,
+        white: auto,
+        gray: auto,
+        black: auto,
+        util: auto,
+      ),
+    ),
+  ),
   ufrj: (
     primary: (
-      40: (
+      220: (
         dark: auto,
         light: auto,
         white: auto,

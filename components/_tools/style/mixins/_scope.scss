@@ -43,23 +43,39 @@
   }
 }
 
-@mixin scope() {
-  @include font-faces();
-  :host {
-    @include vars-modular-scale();
-    @include vars-vertical-rhythm();
-    @include vars-color();
-    @include schemas();
-    font-size: var(--ms-0);
-    .mnv {
+@mixin scope($hosted: 'root') {
+  @if ($hosted != 'root' and $hosted != 'host') {
+    @error 'O "#{$hosted}" escopo não existe!';
+  }
+  @if ($hosted == 'root') {
+    :root .mnv {
       margin: 0;
-    }
+      @include vars-modular-scale();
+      @include vars-vertical-rhythm();
+      @include vars-color();
+      &.mnv-ac-font {
+        --ac-font: 'Open Dyslexic';
+      }
+      font-size: var(--ms-0);
+      @include font($init: true);
 
-    .mnv-ac-font {
-      --ac-font: Arial;
+      @include schemas-root();
+      @include hight-contrast-root();
     }
-
-    @include hight-contrast();
-    @include font($init: true);
+  } @else {
+    :host {
+      @include vars-modular-scale();
+      @include vars-vertical-rhythm();
+      @include vars-color();
+      font-size: var(--ms-0);
+      @include font($init: true);
+      @debug map-get($schemas, 'default');
+      @include schema-values(map-get($schemas, 'default'));
+    }
+    :host([ac-font]) {
+      --ac-font: 'Open Dyslexic';
+    }
+    @include schemas-host();
+    @include hight-contrast-host();
   }
 }

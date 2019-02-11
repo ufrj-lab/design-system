@@ -1,13 +1,25 @@
-import { LitElement, html } from '@ufrj/mnv-base'
+import { LitElement, html, uCss } from '@ufrj/mnv-base'
+
+import { initRootScope } from '@ufrj/mnv-scope'
 
 import style from './style.scss'
 
-export class MnvColors extends LitElement {
+class MnvColors extends LitElement {
+  constructor() {
+    super()
+    this.inject = true
+  }
+  static get properties() {
+    return {
+      inject: Boolean,
+    }
+  }
+  static get styles() {
+    return uCss(style)
+  }
   render() {
+    initRootScope(this.inject)
     return html`
-      <style>
-        ${style}
-      </style>
       <div class="colors">
         <div class="color primary-dark">Primary Dark</div>
         <div class="color primary">Primary</div>
@@ -36,5 +48,3 @@ export class MnvColors extends LitElement {
 }
 
 customElements.define('mnv-colors', MnvColors)
-
-export default MnvColors
