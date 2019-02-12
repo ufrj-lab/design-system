@@ -17,13 +17,6 @@
     }
   }
 
-  $color-test: null;
-
-  @if ($color-test == null) {
-    // @debug $type;
-    $color-test: get-color($type);
-  }
-
   @if ($type != text and $type != util) {
     $type: 'sch';
     $name: #{-#{$name}};
@@ -43,12 +36,14 @@
 
   @if ($init == true or $name != null) {
     $prefix: get-color-prefix($type);
+
     @if ($name == null) {
       --scope-bg-cl: var(--sch-cl-primary-white);
     } @else {
       --scope-bg-cl: var(#{$prefix}#{$name}#{$color});
+      $test: get-color($prefix, $name, $color);
     }
-    // @debug $color-test;
+
     --scope-text-cl: var(--cl-text-dark);
   }
   background-color: var(--ac-hc-bg, var(--scope-bg-cl));
