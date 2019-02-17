@@ -1,54 +1,37 @@
-$default-text-op: 0.95;
-
-$default-text-colors: (
-  dark: (
-    #000: (
-      op: (
-        70: 0.7,
-      ),
-    ),
-  ),
-  light: (
-    #fff: (
-      op: (
-        70: 0.7,
-      ),
-    ),
-  ),
-);
-
 $colors-auto-variations: (
   default: 'day',
   day: (
     primary: (
-      ah: 0deg,
-      s: 100%,
-      l: 30%,
-    ),
-    dark: (
-      ah: 0deg,
-      s: 100%,
-      l: 20%,
-    ),
-    light: (
-      ah: 0deg,
-      s: 100%,
-      l: 69%,
-    ),
-    white: (
-      ah: -60deg,
-      s: 45%,
-      l: 98%,
-    ),
-    gray: (
-      ah: -30deg,
-      s: 43%,
-      l: 93%,
-    ),
-    black: (
-      ah: 0deg,
-      s: 100%,
-      l: 6%,
+      default: (
+        ah: 0deg,
+        s: 100%,
+        l: 30%,
+      ),
+      dark: (
+        ah: 0deg,
+        s: 100%,
+        l: 20%,
+      ),
+      light: (
+        ah: 0deg,
+        s: 100%,
+        l: 69%,
+      ),
+      white: (
+        ah: -60deg,
+        s: 45%,
+        l: 98%,
+      ),
+      gray: (
+        ah: -30deg,
+        s: 43%,
+        l: 93%,
+      ),
+      black: (
+        ah: 0deg,
+        s: 100%,
+        l: 6%,
+      ),
     ),
     util: (
       hue: (
@@ -64,38 +47,58 @@ $colors-auto-variations: (
       ),
       s: 100%,
       l: 36%,
+    ),
+    text: (
+      0.95: (
+        dark: (
+          #000: (
+            op: (
+              70: 0.7,
+            ),
+          ),
+        ),
+        light: (
+          #fff: (
+            op: (
+              70: 0.7,
+            ),
+          ),
+        ),
+      ),
     ),
   ),
   night: (
     primary: (
-      ah: 0deg,
-      s: 100%,
-      l: 30%,
-    ),
-    dark: (
-      ah: 0deg,
-      s: 100%,
-      l: 20%,
-    ),
-    light: (
-      ah: 0deg,
-      s: 100%,
-      l: 69%,
-    ),
-    white: (
-      ah: -60deg,
-      s: 45%,
-      l: 98%,
-    ),
-    gray: (
-      ah: -30deg,
-      s: 43%,
-      l: 93%,
-    ),
-    black: (
-      ah: 0deg,
-      s: 100%,
-      l: 6%,
+      default: (
+        ah: 0deg,
+        s: 100%,
+        l: 30%,
+      ),
+      dark: (
+        ah: 0deg,
+        s: 100%,
+        l: 20%,
+      ),
+      light: (
+        ah: 0deg,
+        s: 100%,
+        l: 69%,
+      ),
+      white: (
+        ah: -60deg,
+        s: 45%,
+        l: 98%,
+      ),
+      gray: (
+        ah: -30deg,
+        s: 43%,
+        l: 93%,
+      ),
+      black: (
+        ah: 0deg,
+        s: 100%,
+        l: 6%,
+      ),
     ),
     util: (
       hue: (
@@ -111,6 +114,24 @@ $colors-auto-variations: (
       ),
       s: 100%,
       l: 36%,
+    ),
+    text: (
+      0.95: (
+        dark: (
+          #000: (
+            op: (
+              70: 0.7,
+            ),
+          ),
+        ),
+        light: (
+          #fff: (
+            op: (
+              70: 0.7,
+            ),
+          ),
+        ),
+      ),
     ),
   ),
 );
@@ -124,7 +145,13 @@ $schemas: (
         white: auto,
         gray: auto,
         black: auto,
-        util: auto,
+      ),
+    ),
+    util: auto,
+    text: (
+      auto: (
+        dark: auto,
+        light: auto,
       ),
     ),
   ),
@@ -136,7 +163,13 @@ $schemas: (
         white: auto,
         gray: auto,
         black: auto,
-        util: auto,
+      ),
+    ),
+    util: auto,
+    text: (
+      auto: (
+        dark: auto,
+        light: auto,
       ),
     ),
   ),

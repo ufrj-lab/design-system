@@ -55,6 +55,7 @@
       $prefix: gen-var-color-name($color-name);
       #{$prefix}: #{gen-auto-color($hue)};
       @each $variation, $value in $fallbacks {
+        // @debug 'schema-values', $variation, $value;
         @if ($value == auto) {
           @include auto-colors($hue, $default, $variation, $prefix);
         } @else {

@@ -69,7 +69,6 @@
       @include vars-color();
       font-size: var(--ms-0);
       @include font($init: true);
-      @debug map-get($schemas, 'default');
       @include schema-values(map-get($schemas, 'default'));
     }
     :host([ac-font]) {
