@@ -45,7 +45,7 @@
     "eslint-plugin-cypress": "^2.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "lerna": "^3.11.0",
-    "lighthouse": "^4.1.0",
+    "lighthouse": "^5.0.0",
     "markdownlint": "^0.12.0",
     "modularscale-sass": "^3.0.8",
     "node-sass": "^4.11.0",
