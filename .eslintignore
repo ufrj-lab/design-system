@@ -1,6 +1,7 @@
-!.cypress
-components/**/lib
-components/**/_public
-components/**/tmp
-components/**/externals
-components/**/assets
+**/lib
+**/demo
+**/node_modules
+**/.rpc2_cache
+
+public/
+coverage/

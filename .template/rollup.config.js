@@ -5,14 +5,9 @@ const { input, external } = mnv.rollup
 
 export default config({
   input,
-  outputDir: './public',
+  outputDir: './demo',
   dependencies,
   external,
-  watch: {
-    include: 'src/**',
-    exclude: 'src/*{.test.ts,.spec.ts,.stories.ts}',
-  },
-  sourcemap: false,
   strategy: 'demo',
   dependenciesPath: './../../',
 })

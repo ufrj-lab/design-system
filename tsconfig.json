@@ -1,0 +1,30 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": ["es2017", "dom"],
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "removeComments": true
+  },
+  "include": ["*.ts", "**/*.ts", "node_modules/@open-wc/**/*.js"],
+  "exclude": [
+    "node_modules/!(@open-wc)",
+    "public",
+    "utils",
+    "**/lib",
+    "**/node_modules",
+    "coverage"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../src",
+    "outDir": "../lib",
+    "allowJs": false,
+    "checkJs": false,
+    "noEmit": false,
+    "declaration": true
+  },
+  "include": ["../**/*.ts"],
+  "exclude": [
+    "../config",
+    "../node_modules",
+    "../lib",
+    "../.rpt2_cache",
+    "../**/*.stories.ts",
+    "../**/*.spec.ts",
+    "../**/*.test.ts"
+  ]
+}

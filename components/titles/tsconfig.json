@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "../../node_modules/@open-wc/**/*.js"],
+  "exclude": [
+    "public",
+    "node_modules",
+    "../../node_modules/@open-wc/!(@open-wc)",
+    "lib",
+    ".rpt2_cache",
+    "rollup.config.js"
+  ]
+}

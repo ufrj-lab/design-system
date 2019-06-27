@@ -1,8 +1,8 @@
 {
-  "name": "@ufrj/mnv-base",
+  "name": "@ufrj/mnv-utils",
   "version": "0.0.0",
   "main": "lib/index.js",
-  "module": "lib/MnvBase.js",
+  "module": "lib/MnvUtils.js",
   "license": "AGPL-3.0",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [],
@@ -23,7 +23,6 @@
     "_watch:webcomponent": "rollup -c ./rollup.config.js -w"
   },
   "dependencies": {
-    "@ufrj/mnv-utils": "^0.0.0",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
@@ -45,7 +44,9 @@
     "rollup": {
       "input": "./src/index.html",
       "outputDir": "../../public",
-      "external": []
+      "external": [
+        "lit-element"
+      ]
     }
   }
 }

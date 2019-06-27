@@ -1,0 +1,4 @@
+*
+!public/*.js
+!public/*.map
+!server
