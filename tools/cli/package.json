@@ -1,0 +1,15 @@
+{
+  "name": "@ufrj/mnv-cli",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "AGPL-3.0",
+  "name": "@ufrj/mnv-cli",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "license": "AGPL-3.0",
+  "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
+  "contributors": [],
+  "bin": {
+
+  }
+}

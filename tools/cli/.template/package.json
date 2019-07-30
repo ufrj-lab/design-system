@@ -8,28 +8,29 @@
   "contributors": [],
   "scripts": {
     "clean": "run-p clean:*",
-    "clean:build": "run-p clean-*",
+    "clean:build": "run-p _clean:build:*",
+    "_clean:build:public": "rimraf public",
+    "_clean:build:lib": "rimraf lib",
     "clean:package": "rimraf *.tgz",
     "clean:cache": "rimraf .rpt2_cache",
-    "clean-demo": "rimraf demo",
-    "clean-lib": "rimraf lib",
-    "build": "run-s clean:build build-all",
-    "build-all": "run-p build:*",
+    "build": "run-s clean:build _build:all",
+    "_build:all": "run-p build:*",
     "build:typescript": "tsc -p ./config/tsconfig.build.json",
     "build:webcomponent": "rollup -c ./config/rollup.config.build.js",
-    "watch-clean": "run-p clean:cache clean:package clean-demo",
-    "watch": "run-s watch-clean build:typescript watch:*",
-    "watch:webcomponent": "rollup -c ./rollup.config.js -w"
+    "watch": "run-s _watch:pre:* build:typescript watch:*",
+    "_watch:pre:clean": "run-p clean:cache clean:package _clean:build:public",
+    "watch:webcomponent": "onchange -i -k 'src/index.html' -- run-s _clean:build:public _watch:webcomponent",
+    "_watch:webcomponent": "rollup -c ./rollup.config.js -w"
   },
   "dependencies": {
-    "@ufrj/mnv-utils": "^0.0.0",
-    "lit-element": "^2.2.0"
+    "@ufrj/mnv-base": "^0.0.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
+    "onchange": "^6.0.0",
     "rimraf": "^2.6.3",
-    "rollup": "^1.15.6",
-    "typescript": "^3.5.2"
+    "rollup": "^1.17.0",
+    "typescript": "^3.5.3"
   },
   "publishConfig": {
     "access": "public"
