@@ -1,7 +1,7 @@
-import MnvTitles from './'
+import MnvTitles from '.'
 
 window.customElements.define('mnv-titles', MnvTitles)
 
-export * from './'
+export * from '.'
 
 export default MnvTitles

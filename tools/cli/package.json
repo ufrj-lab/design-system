@@ -9,7 +9,5 @@
   "license": "AGPL-3.0",
   "author": "Vinícius Carvalho <vinicius.fc93@gmail.com> (https://ufrj.br)",
   "contributors": [],
-  "bin": {
-
-  }
+  "bin": {}
 }

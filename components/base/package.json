@@ -17,7 +17,7 @@
     "_build:all": "run-p build:*",
     "build:typescript": "tsc -p ./config/tsconfig.build.json",
     "build:webcomponent": "rollup -c ./config/rollup.config.build.js",
-    "watch": "run-s _watch:pre:* build:typescript watch:*",
+    "watch": "run-s _watch:pre:* watch:*",
     "_watch:pre:clean": "run-p clean:cache clean:package _clean:build:public",
     "watch:webcomponent": "onchange -i -k 'src/index.html' -- run-s _clean:build:public _watch:webcomponent",
     "_watch:webcomponent": "rollup -c ./rollup.config.js -w"

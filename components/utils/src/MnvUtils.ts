@@ -1,5 +1,4 @@
-// tslint:disable: interface-name no-console
-import { initLogWarning, initThrowError } from './'
+import { initLogWarning, initThrowError } from '.'
 
 declare global {
   export interface Window {
@@ -15,10 +14,10 @@ const { mnv } = window
 const debugEnabled = !mnv || mnv.debug === true
 
 if (debugEnabled) {
-  console.dir('oie')
+  console.dir('DEBUG', true)
 }
 
 export const throwError = initThrowError(debugEnabled)
 export const logWarning = initLogWarning(debugEnabled)
 
-export * from './'
+export * from '.'

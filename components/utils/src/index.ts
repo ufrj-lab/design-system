@@ -1,4 +1,3 @@
-// tslint:disable: no-console
 import { LitElement } from 'lit-element'
 
 export function initThrowError(debugEnabled: boolean) {

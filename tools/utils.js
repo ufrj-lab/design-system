@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export function toCapitalizer(str) {
   return `${str[0].toUpperCase()}${str.slice(1)}`
 }
@@ -46,45 +45,65 @@ export function resolveDependenciesBuild(dependencies, strategy) {
 }
 
 export function publicReplaceESModulesPackageNames(
+  haveStyles,
+  name,
   dependencies,
   pkgsExternal = [],
   strategy = 'browser',
   dependenciesPath = './',
 ) {
-  const external = []
-  let replace
+  const externals = []
+  let replaces
+  const { isUfrj, className } = getModuleNamesFromPackageName(name)
+
+  if (haveStyles) {
+    if (isUfrj) {
+      const styles = `./${className}.styles.js`
+      externals.push(styles)
+      if (!replaces) {
+        replaces = {
+          delimiters: ['', ''],
+        }
+      }
+      replaces = {
+        ...replaces,
+        './styles': styles,
+      }
+    }
+  }
 
   const resolvedDependencies = resolveDependenciesBuild(dependencies, strategy)
   resolvedDependencies.forEach(dependence => {
     const { isUfrj, pkgName, moduleName } = dependence
     if (pkgsExternal.includes(pkgName)) {
-      external.push(pkgName)
+      externals.push(pkgName)
       return
     }
 
     if (isUfrj) {
       if (moduleName) {
-        if (!replace) {
-          replace = {
+        const file = `${dependenciesPath}${moduleName}.js`
+        externals.push(file)
+        if (!replaces) {
+          replaces = {
             delimiters: ['', ''],
           }
         }
-        const file = `${dependenciesPath}${moduleName}.js`
-        external.push(file)
-        replace = {
-          ...replace,
+        replaces = {
+          ...replaces,
           [`${pkgName}/lib/${moduleName}`]: file,
           [pkgName]: file,
         }
         return
       }
-      external.push(pkgName)
+      externals.push(pkgName)
     }
   })
 
   const result = {
-    external,
-    replace,
+    externals,
+    replaces,
+    fileName: className,
   }
 
   return result

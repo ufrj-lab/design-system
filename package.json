@@ -15,9 +15,8 @@
     "ci": "run-s link build",
     "l-run": "lerna run",
     "l-run-p": "yarn l-run --parallel --stream",
-    "p-run": "prettier '**/*.{js,ts,html,md,yml,json}'",
-    "e-run": "eslint --ext .js,.html .",
-    "t-run": "tslint -c tslint.json -p tsconfig.json",
+    "p-run": "prettier '**/*.{js,ts,html,md,yml,json}' --ignore-path .gitignore",
+    "e-run": "eslint --ext .js,.html,.ts . --ignore-path .gitignore",
     "on-run": "onchange -e '**/demo/**' -e '**/lib/**' -e '**/public/**' -e '**/.rpt2_cache/**' -e '**/node_modules/**'",
     "build": "yarn l-run build",
     "clean-kill": "yarn clean-all && rm -fr node_modules ",
@@ -27,41 +26,39 @@
     "clean:public": "rimraf public",
     "clean:build": "yarn l-run-p clean",
     "clean:dependencies": "lerna clean -y",
-    "test": "karma start",
+    "test": "karma test --coverage",
     "lint": "run-p lint:*",
     "lint:eslint": "yarn e-run",
     "lint:prettier": "yarn p-run --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
-    "lint:tslint": "yarn t-run",
     "format": "run-p format:*",
     "format:eslint": "yarn e-run --fix",
     "format:prettier": "yarn p-run --write",
-    "format:tslint": "yarn t-run --fix",
     "watch": "run-p watch:*",
     "watch:format": "run-p watch:format:*",
     "watch:build": "yarn l-run-p watch",
     "watch:format:prettier": "yarn on-run '**/*.{js,ts,html,md,yml,json}' -- -- prettier --write {{changed}}",
     "watch:format:eslint": "yarn on-run '**/*.{js,html}' -- -- eslint --fix {{changed}}",
-    "watch:format:tslint": "yarn on-run '**/*.ts' -- -- yarn t-run --fix {{changed}}",
     "link": "lerna link --force-local",
     "server": "es-dev-server -o",
     "dev": "run-p watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
-    "@open-wc/building-rollup": "^0.9.4",
-    "@open-wc/demoing-storybook": "^0.3.0",
-    "@open-wc/eslint-config": "^1.0.0",
-    "@open-wc/polyfills-loader": "^0.3.2",
-    "@open-wc/testing": "^2.2.1",
-    "@open-wc/testing-karma": "^3.1.5",
-    "@open-wc/testing-karma-bs": "^1.1.30",
+    "@open-wc/building-rollup": "^0.9.5",
     "@types/node": "^12.6.8",
-    "@types/storybook__react": "^4.0.2",
-    "@types/webpack-merge": "^4.1.5",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "babel-eslint": "^10.0.2",
+    "browserslist": "^4.6.6",
+    "clean-css": "^4.2.1",
+    "es-dev-server": "^1.8.3",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-wc": "^1.1.1",
     "husky": "^3.0.2",
     "lerna": "^3.16.4",
     "lint-staged": "^9.2.1",
@@ -69,29 +66,82 @@
     "lit-html": "^1.1.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.0.0",
-    "es-dev-server": "^1.8.3",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
     "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-cpy": "^2.0.1",
+    "rollup-plugin-index-html": "^1.4.8",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
-    "typescript": "^3.5.3",
-    "webpack-merge": "^4.2.1"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript"
-    ]
+    "rollup-plugin-terser": "^5.1.1",
+    "typescript": "^3.5.3"
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
+      "prettier"
     ],
     "rules": {
-      "import/no-extraneous-dependencies": false
-    }
+      "import/no-extraneous-dependencies": 0
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts"
+        ],
+        "parser": "@typescript-eslint/parser",
+        "extends": [
+          "plugin:@typescript-eslint/recommended",
+          "prettier/@typescript-eslint"
+        ],
+        "rules": {
+          "@typescript-eslint/explicit-member-accessibility": [
+            2,
+            {
+              "accessibility": "no-public"
+            }
+          ],
+          "@typescript-eslint/explicit-function-return-type": 0
+        }
+      },
+      {
+        "files": [
+          "*.spec.ts",
+          "*.stories.ts"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-vars": 0
+        }
+      },
+      {
+        "files": [
+          "*.js",
+          "*.html"
+        ],
+        "parser": "babel-eslint",
+        "rules": {
+          "no-unused-vars": [
+            2,
+            {
+              "varsIgnorePattern": "^_",
+              "ignoreRestSiblings": true,
+              "argsIgnorePattern": "^_"
+            }
+          ]
+        },
+        "plugins": [
+          "html"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:wc/best-practice"
+        ]
+      }
+    ]
   },
   "prettier": {
     "singleQuote": true,
@@ -101,5 +151,16 @@
     "semi": false,
     "arrowParens": "avoid",
     "proseWrap": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,html,md,yml,json}": [
+      "npx run-p format:*",
+      "git add"
+    ]
   }
 }

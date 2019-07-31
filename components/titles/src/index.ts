@@ -1,10 +1,11 @@
 import { html, LitElement, logWarning, throwError } from '@ufrj/mnv-base'
 
 import stylesComponent from './styles'
+
 export * from './styles'
 
 export class MnvTitles extends LitElement {
-  public level: number
+  level: number
 
   static get properties() {
     return {
@@ -20,7 +21,8 @@ export class MnvTitles extends LitElement {
   static get styles() {
     return stylesComponent
   }
-  public render() {
+
+  render() {
     throwError(this.level < 1, 'mnv-titles: Level 0 is not allowed', this)
     if (
       logWarning(

@@ -1,4 +1,3 @@
-// tslint:disable: no-implicit-dependencies
 import {
   html,
   storiesOf,

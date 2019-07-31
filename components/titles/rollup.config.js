@@ -1,9 +1,10 @@
 import config from '../../rollup.config'
-import { mnv, dependencies } from './package.json'
+import { mnv, dependencies, name } from './package.json'
 
 const { input, external } = mnv.rollup
 
 export default config({
+  name,
   input,
   outputDir: './public',
   dependencies,

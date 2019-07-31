@@ -1,6 +1,6 @@
 import { css, CSSResult, variables } from '@ufrj/mnv-base'
 
-const { fonts, colors, spaces, borders, shadows } = variables
+const { colors } = variables
 
 export const stylesDefinitions: {
   [key: string]: CSSResult
