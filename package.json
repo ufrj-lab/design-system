@@ -67,7 +67,7 @@
     "rollup-plugin-url": "^2.2.0",
     "rollup-plugin-visualizer": "^1.0.0",
     "stylelint": "^9.10.1",
-    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-prettier": "^6.0.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-prettier": "^1.0.6",
     "stylelint-scss": "^3.5.3"
