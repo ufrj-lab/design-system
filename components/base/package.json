@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
-    "lit-element": "^2.0.1"
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
